@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RadioGroup
+        android:id="@+id/rg_select_def_draw_bg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40px"
+        android:layout_marginRight="40px"
+        android:layout_below="@id/et_add_content_head_name"
+            android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_def_draw_bg_0"
+            android:layout_width="216px"
+            android:layout_height="384px"
+            android:layout_marginLeft="11px"
+            android:layout_marginRight="11px"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:checked="true"
+            android:background="@drawable/eink_bg_note_book_white_v_temp"
+            />
+
+        <RadioButton
+            android:id="@+id/rb_def_draw_bg_1"
+            android:layout_width="216px"
+            android:layout_height="384px"
+            android:layout_marginLeft="11px"
+            android:layout_marginRight="11px"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="@drawable/eink_bg_note_book_list_v_temp"
+            />
+
+        <RadioButton
+            android:id="@+id/rb_def_draw_bg_2"
+            android:layout_width="216px"
+            android:layout_height="384px"
+            android:layout_marginLeft="11px"
+            android:layout_marginRight="11px"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="@drawable/eink_bg_note_book_grild_v_temp"
+            />
+
+        <RadioButton
+            android:id="@+id/rb_def_draw_bg_3"
+            android:layout_width="216px"
+            android:layout_height="384px"
+            android:layout_marginLeft="11px"
+            android:layout_marginRight="11px"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="@drawable/eink_bg_note_book_pinyin_v_temp"
+            />
+
+        <RadioButton
+            android:id="@+id/rb_def_draw_bg_4"
+            android:layout_width="216px"
+            android:layout_height="384px"
+            android:layout_marginLeft="11px"
+            android:layout_marginRight="11px"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="@drawable/eink_bg_note_book_tianzi_v_temp"/>
+    </RadioGroup>
+
+
+
+
+</LinearLayout>

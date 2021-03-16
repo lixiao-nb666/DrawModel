@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16px"
+            android:text="@string/create_file_folder"
+            android:textColor="@color/black"
+            android:textSize="40px" />
+
+        <TextView
+            android:id="@+id/cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:padding="4px"
+            android:layout_marginTop="16px"
+            android:layout_marginLeft="400px"
+            android:textSize="26px"
+            android:text="@string/cancel" />
+
+        <ImageView
+            android:layout_width="300px"
+            android:layout_height="300px"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/content_head_file_folder"/>
+
+        <EditText
+            android:id="@+id/et_add_content_head_name"
+            android:layout_width="400px"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8px"
+            android:textSize="25px" />
+
+
+
+     <TextView
+        android:id="@+id/creat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:padding="4px"
+         android:layout_marginTop="10px"
+         android:layout_gravity="center_horizontal"
+        android:textSize="26px"
+        android:text="@string/dialog_create" />
+
+
+
+
+
+</LinearLayout>

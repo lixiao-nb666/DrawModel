@@ -1,0 +1,23 @@
+<resources>
+
+    <string name="please_input_note_book_name">请输入笔记本标题的名字</string>
+    <string name="please_input_file_folder_name">请输入文件夹的名字</string>
+    <string name="create_note_book">新建笔记本</string>
+    <string name="create_file_folder">新建文件夹</string>
+    <string name="dialog_create">创  建</string>
+    <string name="page_type_a4">默认纸张为:A4</string>
+    <string name="auto">自动</string>
+    <string name="vercital">竖屏</string>
+    <string name="horizotal">横屏</string>
+    <string name="set_def_draw_bg">设置默认背景</string>
+    <string name="no_name_content">无标题的</string>
+    <string name="item_note_book">笔记本</string>
+    <string name="item_folder">文件夹</string>
+    <string name="item_password_book">密码本</string>
+    <string name="item_image">图片</string>
+    <string name="item_diary">日记</string>
+    <string name="item_tally_book">记账本</string>
+    <string name="item_draw_board">画板</string>
+    <string name="item_scene">场景</string>
+    <string name="item_fast_create">快速新建</string>
+</resources>
