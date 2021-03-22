@@ -5,7 +5,10 @@ import android.text.TextUtils;
 
 
 import com.lixiao.build.mybase.appliction.BaseApplication;
+import com.lixiao.build.mybase.appliction.MyApplicationFile;
+import com.lixiao.build.util.Md5Util;
 import com.newbee.drawdevelopmenttool.R;
+import com.newbee.drawdevelopmenttool.sql.content.ContentHeadSqlServer;
 
 import java.io.File;
 import java.io.Serializable;
@@ -17,7 +20,7 @@ public class ContentHeadBean implements Serializable {
     private String filePath;
     private boolean isStar;
     private boolean isNeedDelect;
-    private boolean isLandscape;
+    private int orientation;
     private String textStr;//文本信息
     private int type;//是哪种类型
     private ContentHeadOtherBean contentHeadOtherBean;
@@ -116,13 +119,7 @@ public class ContentHeadBean implements Serializable {
         isNeedDelect = needDelect;
     }
 
-    public boolean isLandscape() {
-        return isLandscape;
-    }
 
-    public void setLandscape(boolean landscape) {
-        isLandscape = landscape;
-    }
 
     public ContentHeadOtherBean getContentHeadOtherBean() {
         if(null==contentHeadOtherBean){
@@ -132,7 +129,13 @@ public class ContentHeadBean implements Serializable {
     }
 
     public void setContentHeadOtherBean(ContentHeadOtherBean contentHeadOtherBean) {
+
+
         this.contentHeadOtherBean = contentHeadOtherBean;
+        if(null==this.contentHeadOtherBean){
+            this.contentHeadOtherBean=new ContentHeadOtherBean();
+        }
+
     }
 
     public int getBgType() {
@@ -156,6 +159,41 @@ public class ContentHeadBean implements Serializable {
 
     public ContentHeadType getEnumType() {
         return ContentHeadType.values()[type];
+    }
+
+    public String getEnumTypeName() {
+        String typeName="";
+        switch (getEnumType()){
+            case FILE_FOLDER:
+                typeName=BaseApplication.getRsString(R.string.item_folder);
+                break;
+            case NOTE_BOOK:
+                typeName=BaseApplication.getRsString(R.string.item_note_book);
+                break;
+            case DIARY:
+                typeName=BaseApplication.getRsString(R.string.item_diary);
+                break;
+            case DRAW_BOARD:
+                typeName=BaseApplication.getRsString(R.string.item_draw_board);
+                break;
+            case IMAGE:
+                typeName=BaseApplication.getRsString(R.string.item_image);
+                break;
+            case SCENE:
+                typeName=BaseApplication.getRsString(R.string.item_scene);
+                break;
+            case PASSWORD_BOOK:
+                typeName=BaseApplication.getRsString(R.string.item_password_book);
+                break;
+            case FAST_CREATE:
+                typeName=BaseApplication.getRsString(R.string.item_fast_create);
+                break;
+            default:
+                typeName=BaseApplication.getRsString(R.string.item_no_know);
+                break;
+        }
+
+        return typeName;
     }
 
 //    public boolean isFolder() {
@@ -182,21 +220,7 @@ public class ContentHeadBean implements Serializable {
         this.textStr = textStr;
     }
 
-    @Override
-    public String toString() {
-        return "ContentHeadBean{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", createTime=" + createTime +
-                ", filePath='" + filePath + '\'' +
-                ", isStar=" + isStar +
-                ", isNeedDelect=" + isNeedDelect +
-                ", isLandscape=" + isLandscape +
-                ", textStr='" + textStr + '\'' +
-                ", type=" + type +
-                ", contentHeadOtherBean=" + contentHeadOtherBean +
-                '}';
-    }
+
 
 
     public String getFileName(int pager) {
@@ -211,5 +235,30 @@ public class ContentHeadBean implements Serializable {
             return filePath;
         }
         return "";
+    }
+
+
+    public int getOrientation() {
+        return orientation;
+    }
+
+    public void setOrientation(int orientation) {
+        this.orientation = orientation;
+    }
+
+    @Override
+    public String toString() {
+        return "ContentHeadBean{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", createTime=" + createTime +
+                ", filePath='" + filePath + '\'' +
+                ", isStar=" + isStar +
+                ", isNeedDelect=" + isNeedDelect +
+                ", orientation=" + orientation +
+                ", textStr='" + textStr + '\'' +
+                ", type=" + type +
+                ", contentHeadOtherBean=" + contentHeadOtherBean +
+                '}';
     }
 }

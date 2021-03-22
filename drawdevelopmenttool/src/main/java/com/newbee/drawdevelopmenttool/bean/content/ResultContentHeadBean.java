@@ -1,5 +1,7 @@
 package com.newbee.drawdevelopmenttool.bean.content;
 
+import com.lixiao.build.mybase.LG;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -33,7 +35,10 @@ public class ResultContentHeadBean implements Serializable {
             contentHeadBeanList = new ArrayList<>();
         }
         if (checkContenHeadBeanCanAdd(contentHeadBean)) {
+
             contentHeadBeanList.add(contentHeadBean);
+        }else {
+
         }
     }
 
@@ -53,8 +58,14 @@ public class ResultContentHeadBean implements Serializable {
         if (null == contentHeadBean || contentHeadBean.getId() == 0) {
             return false;
         }
+        LG.i("kankantianjiashuju","kankantianjiashuju0:-------------------------"+contentHeadBeanList.size());
+        LG.i("kankantianjiashuju","kankantianjiashuju1:"+contentHeadBean);
         for (ContentHeadBean chb : contentHeadBeanList) {
+            LG.i("kankantianjiashuju","kankantianjiashuju2:"+chb);
+
             if (contentHeadBean.getId() == (chb.getId())) {
+                LG.i("kankantianjiashuju","kankantianjiashuju3:"+chb);
+
                 return false;
             }
         }

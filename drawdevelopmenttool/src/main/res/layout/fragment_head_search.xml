@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/tv_head_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="153px"
+        android:text="@string/head_search"
+        android:textColor="@color/black"
+        android:textSize="61px" />
+
+
+    <LinearLayout
+        android:id="@+id/ll_search"
+        android:layout_width="match_parent"
+        android:layout_height="120px"
+        android:layout_below="@+id/tv_head_title"
+        android:layout_marginLeft="60px"
+        android:layout_marginTop="22px"
+        android:layout_marginRight="60px"
+
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_start_search"
+            android:layout_width="48px"
+            android:layout_height="48px"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="32px"
+            android:background="@drawable/pop_ic_search" />
+
+        <EditText
+            android:id="@+id/et_search_content_head"
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:hint="@string/head_search"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black" />
+
+        <ImageView
+            android:id="@+id/iv_show_old_search"
+            android:layout_width="48px"
+            android:layout_height="48px"
+            android:padding="8px"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="10px"
+            android:background="@drawable/search_old_bg" />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_old_search_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_search"
+        android:layout_marginLeft="60px"
+        android:layout_marginTop="22px"
+        android:layout_marginRight="60px" />
+
+
+    <include
+        layout="@layout/fragment_head_show_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/ll_search" />
+
+
+</RelativeLayout>

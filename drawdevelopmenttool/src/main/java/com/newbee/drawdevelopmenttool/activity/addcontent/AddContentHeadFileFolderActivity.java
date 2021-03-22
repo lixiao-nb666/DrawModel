@@ -8,8 +8,8 @@ import com.newbee.drawdevelopmenttool.R;
 import com.newbee.drawdevelopmenttool.bean.content.ContentHeadBean;
 import com.newbee.drawdevelopmenttool.bean.content.ContentHeadRsType;
 import com.newbee.drawdevelopmenttool.bean.content.ContentHeadType;
-import com.newbee.drawdevelopmenttool.util.event.DialogEventBusSubscriptionSubject;
-import com.newbee.drawdevelopmenttool.util.event.DialogEventType;
+import com.newbee.drawdevelopmenttool.util.event.contentheadadd.ContentHeadAddEventBusSubscriptionSubject;
+import com.newbee.drawdevelopmenttool.util.event.contentheadadd.ContentHeadAddEventType;
 
 
 /**
@@ -36,7 +36,7 @@ public class AddContentHeadFileFolderActivity extends BaseCompatActivity {
                 contentHeadBean.setName(addContentHeadNameET.getText().toString());
                 contentHeadBean.setBgType(ContentHeadRsType.FLIE_FOLDER.ordinal());
                 contentHeadBean.setType(ContentHeadType.FILE_FOLDER.ordinal());
-                DialogEventBusSubscriptionSubject.getInstance().eventListen(DialogEventType.ADD_NOTE_BOOK,contentHeadBean);
+                ContentHeadAddEventBusSubscriptionSubject.getInstance().eventListen(ContentHeadAddEventType.ADD_NOTE_BOOK,contentHeadBean);
                 finish();
             }
 

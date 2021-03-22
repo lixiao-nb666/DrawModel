@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_manuscripts_content"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="12px"
+    android:layout_marginBottom="12px"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12px"
+        android:layout_marginBottom="12px"
+        android:orientation="horizontal">
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_manuscripts_content_bg"
+            android:layout_width="118px"
+            android:layout_height="118px"
+            android:scaleType="fitCenter"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="0px"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_manuscripts_content_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25px"
+            android:textColor="@color/manuscripts_content_name_tv"
+            android:maxLines="2"
+            android:textSize="27px" />
+
+        <TextView
+            android:id="@+id/tv_manuscripts_content_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4px"
+            android:textColor="@color/manuscripts_content_time_tv"
+            android:textSize="19px" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_star"
+        android:layout_width="100px"
+        android:layout_height="100px"
+        android:layout_alignParentRight="true"
+        android:scaleType="fitCenter"
+        android:layout_gravity="right"
+        android:padding="20px" />
+    </LinearLayout>
+    <com.lixiao.view.DottedLineView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+      />
+</LinearLayout>

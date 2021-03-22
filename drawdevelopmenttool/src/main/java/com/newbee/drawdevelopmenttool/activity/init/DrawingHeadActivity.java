@@ -8,24 +8,21 @@ import android.widget.ImageView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.lixiao.build.mybase.activity.BaseCompatActivity;
-import com.lixiao.drawui.activity.user.UserPrivateAgreemeetActivity;
-import com.lixiao.drawui.activity.version.AppVersionActivity;
-import com.lixiao.drawui.activity.version.SystemVersionActivity;
-import com.lixiao.drawui.activity.wastepaper.WastepaperBasketActivity;
-import com.lixiao.drawui.fragment.head.HeadFavoritesFragment;
-import com.lixiao.drawui.fragment.head.HeadManuscriptsFragment;
-import com.lixiao.drawui.fragment.head.HeadSearchFragment;
-import com.mannxin.notebook.R;
-import com.newbee.taozinoteboard.adapters.DrawHeadActivityAdapter;
-import com.newbee.taozinoteboard.adapters.FragmentAdapter;
-import com.newbee.taozinoteboard.adapters.HeadSetContentAdapter;
-import com.newbee.taozinoteboard.bean.head.DrawHeadBean;
-import com.newbee.taozinoteboard.popupwindow.drawingheadset.DrawingHeadSetPopupWindow;
-import com.newbee.taozinoteboard.utils.share.CanNotDelectShare;
-import com.newbee.taozinoteboard.views.NoScrollViewPager;
-
+import com.lixiao.build.mybase.appliction.BaseApplication;
+import com.lixiao.build.mybase.popupwindow.BasePopupWindow;
+import com.lixiao.build.mybase.popupwindow.BasePoputWindowListen;
+import com.lixiao.build.mybase.popupwindow.util.PopupManagerUtil;
+import com.lixiao.view.NoScrollViewPager;
+import com.newbee.drawdevelopmenttool.R;
+import com.newbee.drawdevelopmenttool.adapters.DrawHeadActivityAdapter;
+import com.newbee.drawdevelopmenttool.adapters.FragmentAdapter;
+import com.newbee.drawdevelopmenttool.bean.head.DrawHeadBean;
+import com.newbee.drawdevelopmenttool.fragment.head.HeadFavoritesFragment;
+import com.newbee.drawdevelopmenttool.fragment.head.HeadManuscriptsFragment;
+import com.newbee.drawdevelopmenttool.fragment.head.HeadSearchFragment;
+import com.newbee.drawdevelopmenttool.popupwindow.drawingheadset.DrawingHeadSetPopupWindow;
+import com.newbee.drawdevelopmenttool.share.DrawShare;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,9 +33,50 @@ public class DrawingHeadActivity extends BaseCompatActivity {
     private FragmentAdapter fragmentAdapter;
     private RecyclerView headRV;
     private String lastSelectHeadStr;
+    private PopupManagerUtil popupManagerUtil;
+    private PopupManagerUtil.Listen popupManagerUtilListen=new PopupManagerUtil.Listen() {
+        @Override
+        public void err(String err) {
+        }
+
+        @Override
+        public BasePopupWindow createPopupWindow(String popupType) {
+            if(TextUtils.isEmpty(popupType)){
+                return null;
+            }
+            if(popupType.equals(DrawingHeadSetPopupWindow.class.getSimpleName())){
+                return new DrawingHeadSetPopupWindow(context,basePoputWindowListen);
+            }
+            return null;
+        }
+    };
+    private BasePoputWindowListen basePoputWindowListen = new BasePoputWindowListen() {
+        @Override
+        public void getWAndH(int w, int h) {
+
+        }
+
+        @Override
+        public void event(String eventType, Object... objects) {
+                if(TextUtils.isEmpty(eventType)){
+                    return;
+                }
+                if(eventType.equals(DrawingHeadSetPopupWindow.class.getSimpleName())){
+                    String headSetContent= (String) objects[0];
+                    headSetPopup(headSetContent);
+                    return;
+                }
+        }
+
+        private void headSetPopup(String headSetContent){
+
+        }
+
+    };
+
     private DrawHeadActivityAdapter.ViewHodler lastSelectViewHodler;
     private DrawHeadActivityAdapter drawHeadActivityAdapter;
-    private DrawingHeadSetPopupWindow drawingHeadSetPopupWindow;
+
     private DrawHeadActivityAdapter.ItemClick itemClick = new DrawHeadActivityAdapter.ItemClick() {
         @Override
         public void itemClick(DrawHeadActivityAdapter.ViewHodler viewHodler, DrawHeadBean drawHeadBean, int positon) {
@@ -47,6 +85,7 @@ public class DrawingHeadActivity extends BaseCompatActivity {
                     return;
                 }
                 if (null != lastSelectViewHodler) {
+
                     lastSelectViewHodler.headTV.setTextColor(getResources().getColor(R.color.head_tv_false));
                     lastSelectViewHodler.headTV.setTextSize(16);
                 }
@@ -61,7 +100,7 @@ public class DrawingHeadActivity extends BaseCompatActivity {
                 } else if (getString(R.string.head_favorites).equals(lastSelectHeadStr)) {
                     viewPager.setCurrentItem(2);
                 }
-                CanNotDelectShare.getInstance().putHeadLastSelectStr(lastSelectHeadStr);
+                DrawShare.getInstance().putHeadLastSelectStr(lastSelectHeadStr);
             } catch (Exception e) {
             }
         }
@@ -82,9 +121,7 @@ public class DrawingHeadActivity extends BaseCompatActivity {
 
     @Override
     public void initData() {
-
         setIV.setImageResource(R.drawable.head_set);
-
         fragmentList = new ArrayList<>();
         fragmentList.add(new HeadManuscriptsFragment());
         fragmentList.add(new HeadSearchFragment());
@@ -94,11 +131,12 @@ public class DrawingHeadActivity extends BaseCompatActivity {
         drawHeadBeanList.add(new DrawHeadBean(getString(R.string.head_manuscripts), R.drawable.head_manuscripts_false));
         drawHeadBeanList.add(new DrawHeadBean(getString(R.string.head_search), R.drawable.head_search_false));
         drawHeadBeanList.add(new DrawHeadBean(getString(R.string.head_favorites), R.drawable.head_favorites_false));
-        lastSelectHeadStr = CanNotDelectShare.getInstance().getHeadLastSelectStr();
+        lastSelectHeadStr = DrawShare.getInstance().getHeadLastSelectStr();
         if (TextUtils.isEmpty(lastSelectHeadStr)) {
             lastSelectHeadStr = getString(R.string.head_manuscripts);
         }
         drawHeadActivityAdapter = new DrawHeadActivityAdapter(context, drawHeadBeanList, itemClick, lastSelectHeadStr);
+        popupManagerUtil=new PopupManagerUtil(popupManagerUtilListen);
     }
 
 
@@ -108,7 +146,7 @@ public class DrawingHeadActivity extends BaseCompatActivity {
         setIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showSetPopupWindow();
+                popupManagerUtil.showByDown(DrawingHeadSetPopupWindow.class.getSimpleName(),setIV,-100,-120);
             }
         });
 
@@ -117,18 +155,16 @@ public class DrawingHeadActivity extends BaseCompatActivity {
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         headRV.setLayoutManager(linearLayoutManager);
         headRV.setAdapter(drawHeadActivityAdapter);
-//        Class needToCls = CanNotDelectShare.getInstance().getLastOpenActivity();
-//        if (null != needToCls&&!needToCls.equals(getClass())) {
-//            toActivity(needToCls);
-//        }
+        Class needToCls = DrawShare.getInstance().getLastOpenActivity();
+        if (null != needToCls&&!needToCls.equals(getClass())) {
+            toActivity(needToCls);
+        }
 
     }
 
     @Override
     public void closeActivity() {
-        if(null!=drawingHeadSetPopupWindow){
-            drawingHeadSetPopupWindow.close();
-        }
+        popupManagerUtil.close();
     }
 
     @Override
@@ -146,49 +182,7 @@ public class DrawingHeadActivity extends BaseCompatActivity {
 
     }
 
-    private HeadSetContentAdapter.ItemClick headSetContentAdapterItemClick = new HeadSetContentAdapter.ItemClick() {
-        @Override
-        public void clickHeadSetContent(String headSetContent) {
-            hideSetPopupWindow();
-            if(TextUtils.isEmpty(headSetContent)){
-                return;
-            }
-            if(headSetContent.equals(getString(R.string.head_set_item_me))){
-            }else if(headSetContent.equals(getString(R.string.head_set_item_screen_is_v))){
-                if(myWindowSet.screenIsLandscape()){
-                    myWindowSet.setScreenPortrait();
-                }else {
-                    myWindowSet.setScreenLandscape();
-                }
-            }else if(headSetContent.equals(getString(R.string.head_set_item_auto_order))){
 
-            }else if(headSetContent.equals(getString(R.string.head_set_item_def_config))){
 
-            }else if(headSetContent.equals(getString(R.string.head_set_item_wastepaper_basket))){
-                toActivity(WastepaperBasketActivity.class);
-            }else if(headSetContent.equals(getString(R.string.head_set_item_note_book))){
 
-            }else if(headSetContent.equals(getString(R.string.head_set_item_system_v))){
-                toActivity(SystemVersionActivity.class);
-            }else if(headSetContent.equals(getString(R.string.head_set_item_private))){
-                toActivity(UserPrivateAgreemeetActivity.class);
-            }else if(headSetContent.equals(getString(R.string.head_set_item_app_v))){
-                toActivity(AppVersionActivity.class);
-            }
-        }
-    };
-
-    private void showSetPopupWindow() {
-        if(null==drawingHeadSetPopupWindow){
-            drawingHeadSetPopupWindow=new DrawingHeadSetPopupWindow(context,headSetContentAdapterItemClick);
-        }
-        drawingHeadSetPopupWindow.showByDown(setIV,-100,-120);
-
-    }
-
-    private void hideSetPopupWindow() {
-        if(null!=drawingHeadSetPopupWindow){
-            drawingHeadSetPopupWindow.hide();
-        }
-    }
 }

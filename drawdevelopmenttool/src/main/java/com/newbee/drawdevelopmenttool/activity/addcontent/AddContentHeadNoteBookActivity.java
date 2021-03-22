@@ -11,11 +11,12 @@ import com.lixiao.build.mybase.LG;
 import com.lixiao.build.mybase.activity.BaseCompatActivity;
 import com.newbee.drawdevelopmenttool.R;
 import com.newbee.drawdevelopmenttool.bean.content.ContentHeadBean;
+import com.newbee.drawdevelopmenttool.bean.content.ContentHeadOrientationType;
 import com.newbee.drawdevelopmenttool.bean.content.ContentHeadRsType;
 import com.newbee.drawdevelopmenttool.bean.content.ContentHeadType;
 import com.newbee.drawdevelopmenttool.bean.content.bg.NoteBookBgType;
-import com.newbee.drawdevelopmenttool.util.event.DialogEventBusSubscriptionSubject;
-import com.newbee.drawdevelopmenttool.util.event.DialogEventType;
+import com.newbee.drawdevelopmenttool.util.event.contentheadadd.ContentHeadAddEventBusSubscriptionSubject;
+import com.newbee.drawdevelopmenttool.util.event.contentheadadd.ContentHeadAddEventType;
 
 
 import java.util.List;
@@ -41,16 +42,14 @@ public class AddContentHeadNoteBookActivity extends BaseCompatActivity {
             }else if(v.getId()==R.id.tv_create){
                 contentHeadBean.setName(addContentHeadNameET.getText().toString());
                 contentHeadBean.setType(ContentHeadType.NOTE_BOOK.ordinal());
-                DialogEventBusSubscriptionSubject.getInstance().eventListen(DialogEventType.ADD_NOTE_BOOK,contentHeadBean);
+                ContentHeadAddEventBusSubscriptionSubject.getInstance().eventListen(ContentHeadAddEventType.ADD_NOTE_BOOK,contentHeadBean);
                 finish();
             }
 
 
         }
     };
-
     private RadioGroup bgRG;
-    private boolean defScreen;
     private RadioGroup selectSCreenRG;
     private RadioButton autoTV,horizotalTV,vercatalTV,selectTV;
     private RadioGroup selectDrawDefBgRG;
@@ -74,10 +73,6 @@ public class AddContentHeadNoteBookActivity extends BaseCompatActivity {
 
     @Override
     public void initData() {
-        String intentString=getIntentString();
-        if(!TextUtils.isEmpty(intentString)){
-            contentHeadBean= MyGson.getInstance().fromJson(intentString,ContentHeadBean.class);
-        }
         if(null==contentHeadBean){
             contentHeadBean=new ContentHeadBean();
             addContentHeadNameET.setHint(getRsString(R.string.please_input_note_book_name));
@@ -123,16 +118,16 @@ public class AddContentHeadNoteBookActivity extends BaseCompatActivity {
         selectSCreenRG.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                contentHeadBean.setLandscape(false);
+
                 if(checkedId==R.id.tv_auto){
                     setSelectTV(autoTV);
-                    contentHeadBean.setLandscape(defScreen);
+                    contentHeadBean.setOrientation(ContentHeadOrientationType.AUTO.ordinal());
                 }else if(checkedId==R.id.tv_vercital){
                     setSelectTV(vercatalTV);
-                    contentHeadBean.setLandscape(false);
+                    contentHeadBean.setOrientation(ContentHeadOrientationType.vercital.ordinal());
                 }else if(checkedId==R.id.tv_horizotal){
                     setSelectTV(horizotalTV);
-                    contentHeadBean.setLandscape(true);
+                    contentHeadBean.setOrientation(ContentHeadOrientationType.horizotal.ordinal());
                 }
 
 

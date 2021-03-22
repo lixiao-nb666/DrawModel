@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="372px"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@color/white">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="33px"
+        android:layout_marginTop="10px"
+        android:textColor="@color/lh_pager_tv"
+        android:text="@string/scan_rq_can_look"/>
+
+    <ImageView
+        android:id="@+id/iv_show_rq"
+        android:layout_width="300px"
+        android:layout_height="300px"
+        android:layout_marginTop="20px"/>
+
+    <TextView
+        android:id="@+id/tv_other"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20px"
+        android:layout_marginTop="10px"
+        android:textColor="@color/lh_pager_tv"
+   />
+
+
+</LinearLayout>

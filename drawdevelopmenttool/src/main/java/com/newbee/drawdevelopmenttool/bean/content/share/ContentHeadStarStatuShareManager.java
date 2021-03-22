@@ -3,7 +3,8 @@ package com.newbee.drawdevelopmenttool.bean.content.share;
 import android.text.TextUtils;
 
 import com.lixiao.build.gson.MyGson;
-import com.newbee.taozinoteboard.utils.share.CanNotDelectShare;
+import com.newbee.drawdevelopmenttool.share.DrawShare;
+
 
 /**
  * @author lixiaogege!
@@ -18,7 +19,7 @@ public class ContentHeadStarStatuShareManager {
 
     private ContentHeadStarStatuShareManager(){
         try {
-            String shareStr= CanNotDelectShare.getInstance().getString(sharekey);
+            String shareStr= DrawShare.getInstance().getString(sharekey);
             resultContentHeadStarStatuBean= MyGson.getInstance().fromJson(shareStr,ResultContentHeadStarStatuBean.class);
         }catch (Exception e){
 

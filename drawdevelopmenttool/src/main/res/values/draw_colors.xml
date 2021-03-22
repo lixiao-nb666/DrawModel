@@ -1,0 +1,89 @@
+<resources>
+
+    <color name="head_tv_true">#0083FF</color>
+    <color name="head_tv_false">#878787</color>
+    <color name="bg_white">#efefef</color>
+    <color name="manuscripts_content_name_tv">#0083FF</color>
+    <color name="manuscripts_content_time_tv">#b2b2b2</color>
+    <color name="lh_pager_tv">#2D2D2D</color>
+    <color name="gray">#c3c3c3</color>
+    <color name="gray1">#b2b2b2</color>
+    <color name="gray2">#e4e4e4</color>
+    <color name="gray3">#e6e6e6</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="bg_color">#EDEDED</color>
+    <color name="contents_text">#ff000000</color>
+    <color name="encode_view">#ffffffff</color>
+    <color name="help_button_view">#ffcccccc</color>
+    <color name="help_view">#ff404040</color>
+    <color name="possible_result_points">#c0cccca9</color>
+    <color name="possible_result_points_one">#ffff7a</color>
+    <color name="result_image_border">#ffffffff</color>
+    <color name="result_minor_text">#ffc0c0c0</color>
+    <color name="result_points">#c000ff00</color>
+    <color name="result_text">#ffffffff</color>
+    <color name="result_view">#b0000000</color>
+    <color name="sbc_header_text">#ff808080</color>
+    <color name="sbc_header_view">#ffffffff</color>
+    <color name="sbc_list_item">#fffff0e0</color>
+    <color name="sbc_layout_view">#ffffffff</color>
+    <color name="sbc_page_number_text">#ff000000</color>
+    <color name="sbc_snippet_text">#ff4b4b4b</color>
+    <color name="share_text">#ff000000</color>
+    <color name="share_view">#ffffffff</color>
+    <color name="status_view">#50000000</color>
+    <color name="status_text">#d6f5e7</color>
+    <color name="transparent">#00000000</color>
+    <color name="viewfinder_frame">#ff000000</color>
+    <color name="viewfinder_laser">#ffff0000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="header">#58567D</color>
+    <color name="grgray">#686868</color>
+    <color name="azure">#FF0B7AFC</color>
+    <color name="thin">#62dede</color>
+    <color name="darkGreen">#006400</color>
+    <color name="bule">#0066CC</color>
+    <color name="white">#FFFFFF</color>
+    <color name="beige">#CCE8CF</color>
+    <color name="lgray">#FF929292</color>
+    <color name="black">#000</color>
+    <color name="llgray">#FFC2C2C2</color>
+    <color name="lllgray">#FFEAEAEA</color>
+
+
+    <color name="brown">#603811</color>
+    <!--按钮的样式颜色 -->
+    <color name="button_centent">#00b7ef</color>
+    <color name="button_bezel">#a0def1</color>
+    <color name="button_bezel_two">#8dcfaf</color>
+
+    <color name="chart_color">#5ac6f5</color>
+
+    <color name="light_orange">#fcb75c</color>
+    <color name="green">#00FF00</color>
+
+    <color name="one">#eaf2ea</color>
+    <color name="two">#e3f2e3</color>
+    <color name="three">#d7ecd7</color>
+
+    <color name="colorRedBg">#fa5148</color>
+
+    <color name="colorSelected">#e9c364</color>
+    <color name="colorDeselected">#fdfdfd</color>
+    <color name="color_gray">#999999</color>
+    <color name="color_red">#E62E2E</color>
+    <color name="color_orange">#FF9E36</color>
+    <color name="color_yellow">#FFDD33</color>
+    <color name="color_green">#88E858</color>
+    <color name="color_ching">#45E6CB</color>
+    <color name="color_blue">#3172F5</color>
+    <color name="color_purple">#F52CF5</color>
+
+
+    <color name="draw_bg">#f5f5f5</color>
+    <color name="draw_content_head_tv">#757575</color>
+
+</resources>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+
+
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16px"
+            android:text="@string/push_out_more"
+            android:textColor="@color/black"
+            android:textSize="40px" />
+
+
+
+
+
+     <Button
+        android:id="@+id/bt_push_out_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:padding="4px"
+         android:layout_marginTop="10px"
+         android:layout_gravity="center_horizontal"
+        android:textSize="26px"
+        android:text="@string/push_out_one" />
+
+
+    <Button
+        android:id="@+id/bt_push_out_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:padding="4px"
+        android:layout_marginTop="10px"
+        android:layout_gravity="center_horizontal"
+        android:textSize="26px"
+        android:text="@string/push_out_more" />
+    <Button
+        android:id="@+id/bt_push_out_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:padding="4px"
+        android:layout_marginTop="10px"
+        android:layout_gravity="center_horizontal"
+        android:textSize="26px"
+        android:text="@string/push_out_all" />
+    <Button
+        android:id="@+id/bt_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:padding="4px"
+        android:layout_marginTop="10px"
+        android:layout_gravity="center_horizontal"
+        android:textSize="26px"
+        android:text="@string/cancel" />
+
+</LinearLayout>

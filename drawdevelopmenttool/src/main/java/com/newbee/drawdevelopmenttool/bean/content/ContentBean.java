@@ -1,14 +1,14 @@
 package com.newbee.drawdevelopmenttool.bean.content;
 
-import com.newbee.taozinoteboard.draw.bean.init.TaoZiDrawViewInItBean;
-import com.newbee.taozinoteboard.splite.ContentHeadSqlServer;
-import com.newbee.taozinoteboard.utils.share.MySharePreferences;
+import com.newbee.drawdevelopmenttool.share.DrawShare;
+import com.newbee.drawdevelopmenttool.sql.content.ContentHeadSqlServer;
+
 
 import java.io.Serializable;
 
 public class ContentBean implements Serializable {
     private ContentHeadBean contentHeadBean;
-    private TaoZiDrawViewInItBean inItBean;
+    private ContentHeadInItBean inItBean;
     private int countPagerNumb;
 
     public int getCountPagerNumb() {
@@ -33,7 +33,7 @@ public class ContentBean implements Serializable {
 
     public ContentBean(ContentHeadBean contentHeadBean) {
         this.contentHeadBean = contentHeadBean;
-        inItBean=new TaoZiDrawViewInItBean();
+        inItBean=new ContentHeadInItBean();
     }
 
 
@@ -48,14 +48,14 @@ public class ContentBean implements Serializable {
         this.contentHeadBean = contentHeadBean;
     }
 
-    public TaoZiDrawViewInItBean getInItBean() {
+    public ContentHeadInItBean getInItBean() {
         if(null==inItBean){
-            inItBean=new TaoZiDrawViewInItBean();
+            inItBean=new ContentHeadInItBean();
         }
         return inItBean;
     }
 
-    public void setInItBean(TaoZiDrawViewInItBean inItBean) {
+    public void setInItBean(ContentHeadInItBean inItBean) {
         this.inItBean = inItBean;
     }
 
@@ -77,12 +77,12 @@ public class ContentBean implements Serializable {
     public void saveToSql(){
         ContentHeadBean contentHeadBean=getContentHeadBean();
         if(getContentHeadBean().getId()==-1){
-           contentHeadBean= ContentHeadSqlServer.getInstance().add(contentHeadBean);
+           contentHeadBean=  ContentHeadSqlServer.getInstance().add(contentHeadBean);
            setContentHeadBean(contentHeadBean);
         }else {
           ContentHeadSqlServer.getInstance().update(contentHeadBean);
         }
-        MySharePreferences.getInstance().putContentBean(this);
+        DrawShare.getInstance().putContentBean(this);
     }
 
 

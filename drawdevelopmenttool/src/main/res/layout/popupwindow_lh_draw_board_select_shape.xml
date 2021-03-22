@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="372px"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@color/white">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="33px"
+        android:layout_marginTop="10px"
+        android:textColor="@color/lh_pager_tv"
+        android:text="@string/select_shape"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:layout_marginLeft="8px"
+        android:layout_marginRight="8px"
+        android:layout_marginTop="8px"
+        android:layout_marginBottom="8px"
+        android:background="@color/gray3"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginLeft="10px"
+        android:layout_marginRight="10px"
+        android:layout_marginTop="10px"
+        android:layout_height="68px">
+        <ImageView
+            android:id="@+id/iv_oval"
+            android:layout_width="68px"
+            android:layout_height="68px"
+            android:layout_marginLeft="10px"
+            android:layout_marginRight="10px"
+            android:padding="8px"
+            android:background="@drawable/note_book_btn_bg"/>
+        <ImageView
+            android:id="@+id/iv_fill_oval"
+            android:layout_width="68px"
+            android:layout_height="68px"
+            android:layout_marginLeft="10px"
+            android:layout_marginRight="10px"
+            android:padding="8px"
+            android:background="@drawable/note_book_btn_bg"/>
+        <ImageView
+            android:id="@+id/iv_circle"
+            android:layout_width="68px"
+            android:layout_height="68px"
+            android:layout_marginLeft="10px"
+            android:layout_marginRight="10px"
+
+            android:padding="8px"
+            android:background="@drawable/note_book_btn_bg"/>
+        <ImageView
+            android:id="@+id/iv_fill_circle"
+            android:layout_width="68px"
+            android:layout_height="68px"
+            android:layout_marginLeft="10px"
+            android:layout_marginRight="10px"
+            android:padding="8px"
+            android:background="@drawable/note_book_btn_bg"/>
+
+        <ImageView
+            android:id="@+id/iv_triangle"
+            android:layout_width="68px"
+            android:layout_height="68px"
+            android:layout_marginLeft="10px"
+            android:layout_marginRight="10px"
+            android:visibility="gone"
+            android:padding="8px"
+            android:background="@drawable/note_book_btn_bg"/>
+        <ImageView
+            android:id="@+id/iv_fill_triangle"
+            android:layout_width="68px"
+            android:layout_height="68px"
+            android:layout_marginLeft="10px"
+            android:visibility="gone"
+            android:layout_marginRight="10px"
+            android:padding="8px"
+            android:background="@drawable/note_book_btn_bg"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginLeft="10px"
+        android:layout_marginRight="10px"
+        android:layout_marginTop="10px"
+        android:layout_height="68px">
+
+
+        <ImageView
+            android:id="@+id/iv_square"
+            android:layout_width="68px"
+            android:layout_height="68px"
+            android:layout_marginLeft="10px"
+            android:layout_marginRight="10px"
+            android:visibility="gone"
+            android:padding="8px"
+            android:background="@drawable/note_book_btn_bg"/>
+        <ImageView
+            android:id="@+id/iv_fill_square"
+            android:layout_width="68px"
+            android:layout_height="68px"
+            android:layout_marginLeft="10px"
+            android:layout_marginRight="10px"
+            android:padding="8px"
+            android:visibility="gone"
+            android:background="@drawable/note_book_btn_bg"/>
+
+
+        <ImageView
+            android:id="@+id/iv_rect"
+            android:layout_width="68px"
+            android:layout_height="68px"
+            android:layout_marginLeft="10px"
+            android:layout_marginRight="10px"
+            android:padding="8px"
+            android:background="@drawable/note_book_btn_bg"/>
+        <ImageView
+            android:id="@+id/iv_fill_rect"
+            android:layout_width="68px"
+            android:layout_height="68px"
+            android:layout_marginLeft="10px"
+            android:layout_marginRight="10px"
+            android:padding="8px"
+            android:background="@drawable/note_book_btn_bg"/>
+
+        <ImageView
+            android:id="@+id/iv_line"
+            android:layout_width="68px"
+            android:layout_height="68px"
+            android:layout_marginLeft="10px"
+            android:layout_marginRight="10px"
+            android:padding="8px"
+            android:background="@drawable/note_book_btn_bg"/>
+
+        <ImageView
+
+            android:layout_width="68px"
+            android:layout_height="68px"
+            android:layout_marginLeft="10px"
+            android:layout_marginRight="10px"
+            android:padding="8px"
+            android:background="@drawable/note_book_btn_bg"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginTop="13px"
+        android:layout_marginRight="10px"
+        android:layout_marginBottom="6px"
+        android:orientation="horizontal">
+
+
+
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:textSize="26px"
+            android:padding="10px"
+            android:textColor="@color/lh_pager_tv"
+            android:text="@string/cancel"/>
+
+        <TextView
+            android:id="@+id/tv_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16px"
+            android:layout_gravity="bottom"
+            android:visibility="gone"
+            android:textSize="28px"
+            android:padding="10px"
+            android:textColor="@color/lh_pager_tv"
+            android:text="@string/ok"/>
+    </LinearLayout>
+
+</LinearLayout>

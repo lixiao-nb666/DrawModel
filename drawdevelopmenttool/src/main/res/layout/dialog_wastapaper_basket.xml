@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+   <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="@string/wastepaper_basket_manager"
+       android:layout_gravity="center_horizontal"
+       android:textSize="52px"
+       android:layout_marginTop="20px"/>
+
+
+    <Button
+        android:id="@+id/bt_retrun"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/wastepaper_retrun"/>
+
+    <Button
+        android:id="@+id/bt_que_delect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/wastepaper_que_delect"/>
+
+    <Button
+        android:id="@+id/bt_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cancel"/>
+</LinearLayout>
