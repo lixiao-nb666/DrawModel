@@ -41,7 +41,5 @@ public abstract class BaseDrawModelApplication extends BaseApplication {
         XiaoGeDownLoaderManager.getInstance().stopService();
     }
 
-    public void aa(){
 
-    }
 }

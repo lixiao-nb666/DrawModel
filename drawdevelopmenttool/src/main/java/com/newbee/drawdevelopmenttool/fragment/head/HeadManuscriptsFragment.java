@@ -2,7 +2,10 @@ package com.newbee.drawdevelopmenttool.fragment.head;
 
 import android.text.TextUtils;
 import android.view.View;
+
+import com.lixiao.build.gson.MyGson;
 import com.lixiao.build.mybase.LG;
+import com.lixiao.build.mybase.activity.util.ActivityUtil;
 import com.lixiao.build.mybase.fragment.BaseFragmen_v4;
 import com.lixiao.build.mybase.popupwindow.BasePopupWindow;
 import com.lixiao.build.mybase.popupwindow.BasePoputWindowListen;
@@ -10,7 +13,9 @@ import com.lixiao.build.mybase.popupwindow.util.PopupManagerUtil;
 import com.lixiao.build.mybase.sqlite.event.SqlListenObserver;
 import com.lixiao.build.mybase.sqlite.event.SqlListenSubscriptionSubject;
 import com.newbee.drawdevelopmenttool.R;
+import com.newbee.drawdevelopmenttool.application.BaseDrawModelApplication;
 import com.newbee.drawdevelopmenttool.bean.content.ContentHeadBean;
+import com.newbee.drawdevelopmenttool.bean.content.ContentHeadType;
 import com.newbee.drawdevelopmenttool.bean.content.ResultContentHeadBean;
 import com.newbee.drawdevelopmenttool.fragment.head.content.HeadFragmentShowContentType;
 
@@ -170,7 +175,11 @@ public class HeadManuscriptsFragment extends BaseHeadFragment {
 
         contentHeadBean.setFilePath(lastFilePath);
         contentHeadBean.setCreateTime(System.currentTimeMillis());
-        ContentHeadSqlServer.getInstance().add(contentHeadBean);
+        ContentHeadBean add= ContentHeadSqlServer.getInstance().add(contentHeadBean);
+        if(null!=add){
+           Class cls=BaseDrawModelApplication.getInstance().useContentHeadSelectClass(add);
+           ActivityUtil.toActivity(getContext(),cls, MyGson.getInstance().toGsonStr(add));
+       }
     }
 
 
