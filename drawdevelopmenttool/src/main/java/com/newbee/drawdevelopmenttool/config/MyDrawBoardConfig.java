@@ -5,9 +5,13 @@ import android.text.TextUtils;
 
 import com.lixiao.build.mybase.activity.userprivate.bean.UserPrivateAgreemeetInfoBean;
 import com.newbee.drawdevelopmenttool.bean.content.ContentHeadBean;
+import com.newbee.drawdevelopmenttool.bean.content.ContentHeadType;
 import com.newbee.drawdevelopmenttool.config.type.AddContentHeadType;
 import com.newbee.drawdevelopmenttool.config.type.ShowContentHeadType;
 import com.newbee.drawdevelopmenttool.share.DrawShare;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author lixiaogege!
@@ -15,33 +19,16 @@ import com.newbee.drawdevelopmenttool.share.DrawShare;
  * @date :2021/3/17 0017 16:10
  */
 public class  MyDrawBoardConfig {
-    private final String tag=getClass().getSimpleName()+">>>>";
-    private static MyDrawBoardConfig myDrawBoardConfig;
-    private MyDrawBoardConfig(){}
-
-    public static MyDrawBoardConfig getInstance(){
-        if(null==myDrawBoardConfig){
-            synchronized (MyDrawBoardConfig.class){
-                if(null==myDrawBoardConfig){
-                    myDrawBoardConfig=new MyDrawBoardConfig();
-                }
-            }
-        }
-        return myDrawBoardConfig;
-    }
-
-    private UserPrivateAgreemeetInfoBean userPrivateAgreemeetInfoBean;
-    public void setUserPrivateAgreemeetInfoBean(UserPrivateAgreemeetInfoBean userPrivateAgreemeetInfoBean){
-        this.userPrivateAgreemeetInfoBean=userPrivateAgreemeetInfoBean;
-    }
-
-    public UserPrivateAgreemeetInfoBean getUserPrivateAgreemeetInfoBean() {
-        return userPrivateAgreemeetInfoBean;
-    }
+    private static final String tag="MyDrawBoardConfig>>>>";
+    public static AddContentHeadType defAddContentHeadType=AddContentHeadType.USE_POPUPWINDOW;
+    public static ShowContentHeadType defShowContentHeadType=ShowContentHeadType.RV;
+    public static boolean defSearchNeedDelect=false;
+    public static Map<ContentHeadType,Class> contentHeadToClassMap=new HashMap<>();
+    public static UserPrivateAgreemeetInfoBean userPrivateAgreemeetInfoBean;
 
 
 
-    public AddContentHeadType getAddContentHeadType() {
+    public static AddContentHeadType getAddContentHeadType() {
        try {
            String shareStr=DrawShare.getInstance().getString(tag+"addContentHeadType");
            if(!TextUtils.isEmpty(shareStr)){
@@ -49,16 +36,16 @@ public class  MyDrawBoardConfig {
                 return AddContentHeadType.values()[index];
            }
        }catch (Exception e){}
-        return BaseDefDrawBoardSet.defAddContentHeadType;
+        return defAddContentHeadType;
     }
 
-    public void setAddContentHeadType(AddContentHeadType addContentHeadType) {
+    public static void setAddContentHeadType(AddContentHeadType addContentHeadType) {
         if(null!=addContentHeadType){
             DrawShare.getInstance().putString(tag+"addContentHeadType",addContentHeadType.ordinal()+"");
         }
     }
 
-    public ShowContentHeadType getShowContentHeadType(){
+    public static ShowContentHeadType getShowContentHeadType(){
         try {
             String shareStr=DrawShare.getInstance().getString(tag+"showContentHeadType");
             if(!TextUtils.isEmpty(shareStr)){
@@ -66,21 +53,21 @@ public class  MyDrawBoardConfig {
                 return ShowContentHeadType.values()[index];
             }
         }catch (Exception e){}
-        return BaseDefDrawBoardSet.defShowContentHeadType;
+        return defShowContentHeadType;
     }
 
-    public void setShowContentHeadType(ShowContentHeadType showContentHeadType) {
+    public static void setShowContentHeadType(ShowContentHeadType showContentHeadType) {
         if(null!=showContentHeadType){
             DrawShare.getInstance().putString(tag+"showContentHeadType",showContentHeadType.ordinal()+"");
         }
     }
 
 
-    public void setSearchNeedDelect(boolean searchNeedDelect){
+    public static void setSearchNeedDelect(boolean searchNeedDelect){
         DrawShare.getInstance().putString(tag+"searchNeedDelect",searchNeedDelect+"");
     }
 
-    public boolean getSerarchNeedDelect(){
+    public static boolean getSerarchNeedDelect(){
 
         try {
             String shareStr=DrawShare.getInstance().getString(tag+"searchNeedDelect");
@@ -88,7 +75,7 @@ public class  MyDrawBoardConfig {
                 return Boolean.valueOf(shareStr);
             }
         }catch (Exception e){}
-        return BaseDefDrawBoardSet.defSearchNeedDelect;
+        return defSearchNeedDelect;
     }
 
 

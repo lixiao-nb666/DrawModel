@@ -62,7 +62,7 @@ public class HeadSearchFragment extends BaseHeadFragment {
         ResultContentHeadBean resultContentHeadBean=null;
         if(!TextUtils.isEmpty(lastSearChStr)){
             searchContentHeadET.setText(lastSearChStr);
-            resultContentHeadBean=ContentHeadSqlServer.getInstance().fuzzyQueByName(lastSearChStr, MyDrawBoardConfig.getInstance().getSerarchNeedDelect());
+            resultContentHeadBean=ContentHeadSqlServer.getInstance().fuzzyQueByName(lastSearChStr, MyDrawBoardConfig.getSerarchNeedDelect());
         }
 
 
@@ -136,7 +136,7 @@ public class HeadSearchFragment extends BaseHeadFragment {
 
         LG.i(tag, "onTextChanged:" + fuzzyStr);
         if (!TextUtils.isEmpty(fuzzyStr)) {
-            ResultContentHeadBean resultContentHeadBean = ContentHeadSqlServer.getInstance().fuzzyQueByName(fuzzyStr, MyDrawBoardConfig.getInstance().getSerarchNeedDelect());
+            ResultContentHeadBean resultContentHeadBean = ContentHeadSqlServer.getInstance().fuzzyQueByName(fuzzyStr, MyDrawBoardConfig.getSerarchNeedDelect());
 
             return  resultContentHeadBean;
 

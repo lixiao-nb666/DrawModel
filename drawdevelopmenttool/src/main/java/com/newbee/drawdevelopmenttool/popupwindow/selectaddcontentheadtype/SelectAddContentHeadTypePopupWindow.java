@@ -49,7 +49,7 @@ public class SelectAddContentHeadTypePopupWindow extends BasePopupWindow {
                     ContentHeadAddEventBusSubscriptionSubject.getInstance().eventListen(ContentHeadAddEventType.FAST_ADD_NOTE_BOOK,addContentHeadBean);
                     break;
                 default:
-                    switch (MyDrawBoardConfig.getInstance().getAddContentHeadType()){
+                    switch (MyDrawBoardConfig.getAddContentHeadType()){
                         case USE_ACTIVITY:
                             addTypeNeedDoIsActivity(contentHeadType);
                             break;

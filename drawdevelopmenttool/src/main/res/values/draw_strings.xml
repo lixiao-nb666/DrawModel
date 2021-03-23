@@ -101,4 +101,5 @@
     <string name="push_out_all">导出全部</string>
     <string name="update_file_folder">修改文件夹</string>
     <string name="look_content">查看内容</string>
+    <string name="no_to_class">没有可以去的页面</string>
 </resources>

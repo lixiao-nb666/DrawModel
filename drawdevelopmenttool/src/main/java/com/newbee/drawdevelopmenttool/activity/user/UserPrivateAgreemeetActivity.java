@@ -14,7 +14,7 @@ public class UserPrivateAgreemeetActivity extends BaseUserPrivateAgreemeet2Activ
     @Override
     public UserPrivateAgreemeetInfoBean getUserPrivateAgreemeetInfo() {
 
-        return MyDrawBoardConfig.getInstance().getUserPrivateAgreemeetInfoBean();
+        return MyDrawBoardConfig.userPrivateAgreemeetInfoBean;
     }
 //    @Override
 //    public String getTitleStr() {

@@ -112,49 +112,17 @@ public class HeadFragmentShowContentView {
 
                         switch (contentHeadBean.getEnumType()) {
                             case FILE_FOLDER:
-
                                 String  lastFilePath = contentHeadBean.getFilePath() + contentHeadBean.getId() + File.separator;
-                                LG.i(tag,"kankanshenmeguiFILE_FOLDER:"+lastFilePath);
                                 headFragmentNeedListen.needReSetFilePath(lastFilePath);
-
                                 break;
-                            case NOTE_BOOK:
-//                                if (contentHeadBean.isLandscape()) {
-//                                    toActivity(NoteBookLandscapeActivity.class, MyGson.getInstance().toGsonStr(contentHeadBean));
-//
-//                                } else {
-//                                    toActivity(NoteBookPortraitActivity.class, MyGson.getInstance().toGsonStr(contentHeadBean));
-//
-//                                }
-                                break;
-                            case DRAW_BOARD:
-                                switch (contentHeadBean.getBgType()){
-                                    case 0:
-                                    case 1:
-//                                        toActivity(TaoZiDrawViewActivity.class,MyGson.getInstance().toGsonStr(contentHeadBean));
-                                        break;
-                                    default:
-
-                                        break;
+                            default:
+                                Class toCls=MyDrawBoardConfig. contentHeadToClassMap.get(contentHeadBean.getEnumType());
+                                if(null==toCls){
+                                    ToastUtil.showToast(BaseApplication.getRsString(R.string.no_to_class));
+                                }else {
+                                    ActivityUtil.toActivity(activity,toCls,MyGson.getInstance().toGsonStr(contentHeadBean));
                                 }
 
-//
-//                                toActivity(TaoZiEinkDrawViewActivity.class,MyGson.getInstance().toGsonStr(contentHeadBean));
-                                break;
-                            case SCENE:
-
-
-
-                                break;
-                            case IMAGE:
-//                                toActivity(MainActivity.class);
-//                                toActivity(DemoDrawViewActivity.class);
-                                break;
-                            case PASSWORD_BOOK:
-//                                toActivity(PassWordActivity.class,MyGson.getInstance().toGsonStr(contentHeadBean));
-                                break;
-                            case DIARY:
-//                                toActivity(DiaryActivity.class,MyGson.getInstance().toGsonStr(contentHeadBean));
                                 break;
                         }
                         break;
@@ -165,7 +133,7 @@ public class HeadFragmentShowContentView {
         @Override
         public void itemLongClick(View v,ContentHeadBean contentHeadBean) {
             if(null!=contentHeadBean){
-                switch (MyDrawBoardConfig.getInstance().getAddContentHeadType()){
+                switch (MyDrawBoardConfig.getAddContentHeadType()){
                     case USE_POPUPWINDOW:
                        popupManagerUtil.showByCenter(ContentHeadChangePopupWindow.class.getSimpleName(),v,0,0,contentHeadBean);
                         break;
@@ -227,9 +195,7 @@ public class HeadFragmentShowContentView {
                                 if(!TextUtils.isEmpty(retrunContentHeadBean.getFilePath())&&baseHeadFragment.getLastFilePath().equals(retrunContentHeadBean.getFilePath())){
                                     addContentHeadBean(retrunContentHeadBean);
                                 }
-
                                 break;
-
                             case FAVORITES:
                                 if(retrunContentHeadBean.isStar()){
                                     addContentHeadBean(retrunContentHeadBean);
@@ -318,7 +284,7 @@ public class HeadFragmentShowContentView {
         nameTV = view.findViewById(R.id.tv_manuscripts_name);
         showModelIV = view.findViewById(R.id.iv_show_model);
         contentRV = view.findViewById(R.id.rv_content);
-        switch (MyDrawBoardConfig.getInstance().getShowContentHeadType()){
+        switch (MyDrawBoardConfig.getShowContentHeadType()){
             case PAGER:
               pagerView=  new HeadFragmentShowContentPagerView(view.findViewById(R.id.ll_show_pager));
                 break;
@@ -372,7 +338,7 @@ public class HeadFragmentShowContentView {
 
     private void initSetRV() {
         setLayoutManager();
-        switch (MyDrawBoardConfig.getInstance().getShowContentHeadType()){
+        switch (MyDrawBoardConfig.getShowContentHeadType()){
             case PAGER:
                 listAdapter = new ManuscriptsContentPagerAdapter(activity,contentType, resultContentHeadBean.getContentHeadBeanList(), itemClick, showModelType, adapterNeedAddContent, adapterNeedRetrun,pagerView);
                 break;
