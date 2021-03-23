@@ -1,5 +1,7 @@
 package com.newbee.drawdevelopmenttool.sql.content;
 
+import android.database.Cursor;
+
 import com.lixiao.build.mybase.LG;
 import com.lixiao.build.mybase.sqlite.BaseSqlServer;
 import com.newbee.drawdevelopmenttool.bean.content.ContentHeadBean;
@@ -40,10 +42,28 @@ public class ContentHeadSqlServer extends BaseSqlServer {
 
     public ContentHeadBean add(ContentHeadBean contentHeadBean) {
 
-        ContentHeadBean cb= (ContentHeadBean) super.add(contentHeadBean);
-        LG.i(tag,"-----------kankanadd:"+cb);
+        ContentHeadBean cb = (ContentHeadBean) super.add(contentHeadBean);
+        LG.i(tag, "-----------kankanadd:" + cb);
         return cb;
     }
+
+    public boolean delectById(long id) {
+        return delectById(id);
+    }
+
+    public boolean delectAll() {
+
+        return delectAll();
+    }
+
+
+    public ResultContentHeadBean queByType(int type) {
+        ResultContentHeadBean resultContentHeadBean = new ResultContentHeadBean();
+        List<ContentHeadBean> list = que("type", type + "");
+        resultContentHeadBean.setContentHeadBeanList(list);
+        return resultContentHeadBean;
+    }
+
 
     public ResultContentHeadBean queIsRbs() {
         ResultContentHeadBean resultContentHeadBean = new ResultContentHeadBean();
@@ -52,11 +72,18 @@ public class ContentHeadSqlServer extends BaseSqlServer {
         return resultContentHeadBean;
     }
 
+    public ResultContentHeadBean queById(long id) {
+        ResultContentHeadBean resultContentHeadBean = new ResultContentHeadBean();
+        List<ContentHeadBean> list = que("id", id + "");
+        resultContentHeadBean.setContentHeadBeanList(list);
+        return resultContentHeadBean;
+    }
+
     public ResultContentHeadBean queByIsstar() {
         ResultContentHeadBean resultContentHeadBean = new ResultContentHeadBean();
-        String[] keyS={"isStar","isNeedDelect"};
-        String[] vueS={true+"",false+""};
-        List<ContentHeadBean> list = que(keyS,vueS);
+        String[] keyS = {"isStar", "isNeedDelect"};
+        String[] vueS = {true + "", false + ""};
+        List<ContentHeadBean> list = que(keyS, vueS);
         resultContentHeadBean.setContentHeadBeanList(list);
         return resultContentHeadBean;
     }
@@ -64,25 +91,32 @@ public class ContentHeadSqlServer extends BaseSqlServer {
 
     public ResultContentHeadBean queByFilePath(String filePath) {
         ResultContentHeadBean resultContentHeadBean = new ResultContentHeadBean();
-        String[] keyS={"filePath","isNeedDelect"};
-        String[] vueS={filePath,false+""};
-        List<ContentHeadBean> list = que(keyS,vueS);
+        String[] keyS = {"filePath", "isNeedDelect"};
+        String[] vueS = {filePath, false + ""};
+        List<ContentHeadBean> list = que(keyS, vueS);
         resultContentHeadBean.setContentHeadBeanList(list);
         return resultContentHeadBean;
     }
 
-    public ResultContentHeadBean fuzzyQueByName(String fuzzyStr,boolean isNeedSearchDelect) {
+    public ResultContentHeadBean fuzzyQueByName(String fuzzyStr, boolean isNeedSearchDelect) {
         ResultContentHeadBean resultContentHeadBean = new ResultContentHeadBean();
-        List<ContentHeadBean> list=null;
-        if(isNeedSearchDelect){
-            list = fuzzyQue("name",fuzzyStr );
-        }else {
-            String[] keyS={"name","isNeedDelect"};
-            String[] vueS={fuzzyStr,false+""};
-            list = fuzzyQue(keyS,vueS );
+        List<ContentHeadBean> list = null;
+        if (isNeedSearchDelect) {
+            list = fuzzyQue("name", fuzzyStr);
+        } else {
+            String[] keyS = {"name", "isNeedDelect"};
+            String[] vueS = {fuzzyStr, false + ""};
+            list = fuzzyQue(keyS, vueS);
         }
 
 
+        resultContentHeadBean.setContentHeadBeanList(list);
+        return resultContentHeadBean;
+    }
+
+    public ResultContentHeadBean getAll(){
+        ResultContentHeadBean resultContentHeadBean = new ResultContentHeadBean();
+        List<ContentHeadBean> list = queAll();
         resultContentHeadBean.setContentHeadBeanList(list);
         return resultContentHeadBean;
     }
