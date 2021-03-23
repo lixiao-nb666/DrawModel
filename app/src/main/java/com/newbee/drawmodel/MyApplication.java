@@ -4,6 +4,8 @@ import com.lixiao.build.mybase.activity.userprivate.bean.UserPrivateAgreemeetInf
 import com.lixiao.build.mybase.appliction.BaseApplication;
 import com.lixiao.down.config.XiaoGeDownLoaderConfig;
 import com.lixiao.down.manager.XiaoGeDownLoaderManager;
+import com.newbee.drawdevelopmenttool.application.BaseDrawModelApplication;
+import com.newbee.drawdevelopmenttool.bean.content.ContentHeadBean;
 import com.newbee.drawdevelopmenttool.bean.content.ContentHeadType;
 import com.newbee.drawdevelopmenttool.config.type.AddContentHeadType;
 import com.newbee.drawdevelopmenttool.config.MyDrawBoardConfig;
@@ -15,24 +17,33 @@ import com.newbee.drawdevelopmenttool.config.type.ShowContentHeadType;
  * @description: one day day ,no zuo no die !
  * @date :2021/2/1 0001 11:03
  */
-public class MyApplication extends BaseApplication {
+public class MyApplication extends BaseDrawModelApplication {
     @Override
-    protected void init() {
-        XiaoGeDownLoaderConfig.needDownEncoded=false;
-        XiaoGeDownLoaderManager.getInstance().startService(getContext());
+    protected void initNeedDo() {
         initDrawModel();
+    }
+
+    @Override
+    protected void closeNeedDo() {
 
     }
 
     @Override
-    protected void needClear(String str) {
+    public Class useContentHeadSelectClass(ContentHeadBean contentHead) {
+        try {
+
+            switch (contentHead.getEnumType()){
+                case NOTE_BOOK:
+                    return DemoActivity.class;
+            }
+            return null;
+        }catch (Exception e){
+
+        }
+        return null;
     }
 
-    @Override
-    protected void close() {
-        XiaoGeDownLoaderManager.getInstance().stopService();
 
-    }
 
     private void initDrawModel(){
         MyDrawBoardConfig.defAddContentHeadType=AddContentHeadType.USE_POPUPWINDOW;
@@ -43,7 +54,7 @@ public class MyApplication extends BaseApplication {
         userPrivateAgreemeetInfoBean.setComPanyName("东莞曼象科技有限");
         userPrivateAgreemeetInfoBean.setTime("2021/2/23");
         MyDrawBoardConfig.userPrivateAgreemeetInfoBean=userPrivateAgreemeetInfoBean;
-        MyDrawBoardConfig.contentHeadToClassMap.put(ContentHeadType.NOTE_BOOK,DemoActivity.class);
+
     }
 
 }

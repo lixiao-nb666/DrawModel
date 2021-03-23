@@ -22,6 +22,7 @@ import com.lixiao.build.mybase.sqlite.event.SqlListenObserver;
 import com.lixiao.build.mybase.sqlite.event.SqlListenSubscriptionSubject;
 import com.newbee.drawdevelopmenttool.R;
 import com.newbee.drawdevelopmenttool.activity.contentchange.ContentHeadChangeActivity;
+import com.newbee.drawdevelopmenttool.application.BaseDrawModelApplication;
 import com.newbee.drawdevelopmenttool.bean.content.ContentHeadBean;
 import com.newbee.drawdevelopmenttool.bean.content.ContentHeadSortType;
 import com.newbee.drawdevelopmenttool.bean.content.ResultContentHeadBean;
@@ -116,7 +117,7 @@ public class HeadFragmentShowContentView {
                                 headFragmentNeedListen.needReSetFilePath(lastFilePath);
                                 break;
                             default:
-                                Class toCls=MyDrawBoardConfig. contentHeadToClassMap.get(contentHeadBean.getEnumType());
+                                Class toCls= BaseDrawModelApplication.getInstance().useContentHeadSelectClass(contentHeadBean);
                                 if(null==toCls){
                                     ToastUtil.showToast(BaseApplication.getRsString(R.string.no_to_class));
                                 }else {

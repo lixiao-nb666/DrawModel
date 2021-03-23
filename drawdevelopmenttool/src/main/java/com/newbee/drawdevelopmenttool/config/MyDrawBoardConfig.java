@@ -23,7 +23,6 @@ public class  MyDrawBoardConfig {
     public static AddContentHeadType defAddContentHeadType=AddContentHeadType.USE_POPUPWINDOW;
     public static ShowContentHeadType defShowContentHeadType=ShowContentHeadType.RV;
     public static boolean defSearchNeedDelect=false;
-    public static Map<ContentHeadType,Class> contentHeadToClassMap=new HashMap<>();
     public static UserPrivateAgreemeetInfoBean userPrivateAgreemeetInfoBean;
 
 
