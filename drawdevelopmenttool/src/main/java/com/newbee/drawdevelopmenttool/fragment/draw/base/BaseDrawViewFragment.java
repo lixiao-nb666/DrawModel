@@ -74,9 +74,6 @@ public abstract class BaseDrawViewFragment extends BaseFragmen_v4 implements Dra
     @Override
     protected void initView() {
         bindView();
-        drawControlUtil.setBaseDrawView((LinearLayout) view.findViewById(R.id.ll_draw_view),baseDrawViewListen);
-
-
     }
 
 
@@ -89,6 +86,7 @@ public abstract class BaseDrawViewFragment extends BaseFragmen_v4 implements Dra
     @Override
     protected void initControl() {
         viewSetData();
+        drawControlUtil.setBaseDrawView((LinearLayout) view.findViewById(R.id.ll_draw_view),baseDrawViewListen);
     }
 
     @Override
