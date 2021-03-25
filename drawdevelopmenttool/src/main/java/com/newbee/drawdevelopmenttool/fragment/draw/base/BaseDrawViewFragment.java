@@ -94,7 +94,6 @@ public abstract class BaseDrawViewFragment extends BaseFragmen_v4 implements Dra
     @Override
     protected void viewIsShow() {
         drawNeedShow();
-        drawInitOkNowSetView(drawControlUtil.getInItBean(),drawControlUtil.getPagerBean());
     }
 
     @Override
