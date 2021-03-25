@@ -81,7 +81,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <!-- 画板需要的资源配置开始 -->
         <activity android:name="com.newbee.drawdevelopmenttool.activity.init.DrawingHeadActivity"
             android:configChanges="keyboard|screenSize|orientation|layoutDirection"
             android:launchMode="singleTop"/>
@@ -112,5 +112,6 @@
             />
         <service android:name="com.lixiao.down.service.XiaoGeDownLoaderService"/>
         <service android:name="com.lixiao.oss.service.OssService"/>
+        <!-- 画板需要的资源配置结束 -->
     </application>
 </manifest>

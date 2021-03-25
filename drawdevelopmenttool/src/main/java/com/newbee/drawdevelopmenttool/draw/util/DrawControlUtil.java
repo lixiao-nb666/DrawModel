@@ -2,6 +2,7 @@ package com.newbee.drawdevelopmenttool.draw.util;
 
 
 import android.content.Intent;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.newbee.drawdevelopmenttool.activity.init.DrawingHeadActivity;
@@ -46,9 +47,9 @@ public class DrawControlUtil {
 
 
 
-    public void setBaseDrawView(RelativeLayout drawViewRL, BaseDrawViewListen baseDrawViewListen) {
-        baseDrawView=BaseDrawModelApplication.getInstance().getBaseDrawView(drawViewRL.getContext());
-        drawViewRL.addView(baseDrawView.getView());
+    public void setBaseDrawView(LinearLayout ll, BaseDrawViewListen baseDrawViewListen) {
+        baseDrawView=BaseDrawModelApplication.getInstance().getBaseDrawView(ll.getContext());
+        ll.addView(baseDrawView.getView());
         this.baseDrawView.setListen(baseDrawViewListen);
     }
 

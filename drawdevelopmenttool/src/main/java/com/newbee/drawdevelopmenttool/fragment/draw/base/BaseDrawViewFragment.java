@@ -1,5 +1,6 @@
 package com.newbee.drawdevelopmenttool.fragment.draw.base;
 
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.lixiao.build.mybase.fragment.BaseFragmen_v4;
@@ -73,7 +74,7 @@ public abstract class BaseDrawViewFragment extends BaseFragmen_v4 implements Dra
     @Override
     protected void initView() {
         bindView();
-        drawControlUtil.setBaseDrawView((RelativeLayout) view.findViewById(R.id.rl_draw_view),baseDrawViewListen);
+        drawControlUtil.setBaseDrawView((LinearLayout) view.findViewById(R.id.ll_draw_view),baseDrawViewListen);
 
 
     }
