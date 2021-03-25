@@ -8,7 +8,7 @@ import com.lixiao.build.gson.MyGson;
 import com.lixiao.build.mybase.activity.BaseCompatActivity;
 
 import com.newbee.drawdevelopmenttool.R;
-import com.newbee.drawdevelopmenttool.bean.content.ContentBean;
+import com.newbee.drawdevelopmenttool.bean.content.ContentHeadBean;
 
 
 /**
@@ -43,19 +43,19 @@ public class ContentPushOutAllActivity extends BaseCompatActivity {
     public void initView() {
 
     }
-    private ContentBean contentBean;
+    private ContentHeadBean headBean;
     @Override
     public void initData() {
         String intentString=getIntentString();
         if(!TextUtils.isEmpty(intentString)){
-            contentBean= MyGson.getInstance().fromJson(intentString, ContentBean.class);
+            headBean= MyGson.getInstance().fromJson(intentString,ContentHeadBean.class);
         }
-        if(null==contentBean){
+        if(null==headBean){
             finish();
             return;
         }
         TextView titleTV=findViewById(R.id.tv_title);
-        titleTV.setText(titleTV.getText()+"("+contentBean.getContentHeadBean().getName()+")");
+        titleTV.setText(titleTV.getText()+"("+headBean.getName()+")");
         findViewById(R.id.bt_push_out_one).setOnClickListener(clickListener);
         findViewById(R.id.bt_push_out_more).setOnClickListener(clickListener);
         findViewById(R.id.bt_push_out_all).setOnClickListener(clickListener);

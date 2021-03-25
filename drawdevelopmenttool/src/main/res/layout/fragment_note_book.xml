@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <include layout="@layout/fragment_note_book_title" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black" />
+
+    <LinearLayout
+        android:id="@+id/ll_draw"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="18px"
+            android:background="@color/black" />
+            <include layout="@layout/draw_view"/>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="18px"
+            android:background="@color/black" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="18px"
+        android:layout_marginRight="18px"
+        android:layout_marginBottom="18px"
+        android:background="@color/black" />
+
+
+</LinearLayout>

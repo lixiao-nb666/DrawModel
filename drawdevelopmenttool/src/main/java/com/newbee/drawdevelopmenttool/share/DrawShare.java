@@ -6,8 +6,8 @@ import android.text.TextUtils;
 
 import com.lixiao.build.gson.MyGson;
 import com.lixiao.build.mybase.share.BaseShare;
-import com.newbee.drawdevelopmenttool.bean.content.ContentBean;
-import com.newbee.drawdevelopmenttool.bean.content.ContentHeadBean;
+import com.newbee.drawdevelopmenttool.bean.content.ContentInItBean;
+import com.newbee.drawdevelopmenttool.bean.content.ContentPagerBean;
 import com.newbee.drawdevelopmenttool.bean.content.ResultContentHeadBean;
 
 public class DrawShare extends BaseShare {
@@ -48,24 +48,52 @@ public class DrawShare extends BaseShare {
         putString(tag + openContentHeadListKey, MyGson.getInstance().toGsonStr(resultContentHeadBean));
     }
 
-    private final String contentKey = "contentKey";
+    private final String contentInitKey = "contentInitKey";
 
-    public void putContentBean(ContentBean contentBean) {
-        if (null == contentBean) {
+    public void putContentInitBean(ContentInItBean inItBean) {
+        if (null == inItBean) {
             return;
         }
-        putString(contentKey + contentBean.getContentHeadBean().getId(), MyGson.getInstance().toGsonStr(contentBean));
+        putString(contentInitKey + inItBean.getHeadId(), MyGson.getInstance().toGsonStr(inItBean));
     }
 
-    public ContentBean getContentBean(ContentHeadBean contentHeadBean) {
+    public ContentInItBean getContentInItBean(long headId) {
+        ContentInItBean inItBean=null;
         try {
-            String shareStr = getString(contentKey + contentHeadBean.getId());
-            return MyGson.getInstance().fromJson(shareStr, ContentBean.class);
+            String shareStr = getString(contentInitKey + headId);
+            inItBean=MyGson.getInstance().fromJson(shareStr, ContentInItBean.class);
+
         } catch (Exception e) {
-            return null;
+
         }
+        if(null==inItBean){
+            inItBean=new ContentInItBean(headId);
+        }
+        return inItBean;
+    }
 
+    private final String contentPagerKey = "contentPagerKey";
 
+    public void putContentPagerBean(ContentPagerBean pagerBean) {
+        if (null == pagerBean) {
+            return;
+        }
+        putString(contentPagerKey + pagerBean.getHeadId(), MyGson.getInstance().toGsonStr(pagerBean));
+    }
+
+    public ContentPagerBean getContentPagerBean(long headId) {
+        ContentPagerBean pagerBean=null;
+        try {
+            String shareStr = getString(contentPagerKey  + headId);
+            pagerBean= MyGson.getInstance().fromJson(shareStr, ContentPagerBean.class);
+
+        } catch (Exception e) {
+
+        }
+        if(null==pagerBean){
+            pagerBean=new ContentPagerBean(headId);
+        }
+        return pagerBean;
     }
 
     private final String lastOpenActivity = "lastOpenActivity";

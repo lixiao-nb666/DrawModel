@@ -10,6 +10,7 @@ import com.lixiao.build.mybase.appliction.BaseApplication;
 import com.lixiao.build.mybase.popupwindow.BasePopupWindow;
 import com.lixiao.build.mybase.popupwindow.BasePoputWindowListen;
 import com.newbee.drawdevelopmenttool.R;
+import com.newbee.drawdevelopmenttool.activity.configset.ConfigSetActivity;
 import com.newbee.drawdevelopmenttool.activity.user.UserPrivateAgreemeetActivity;
 import com.newbee.drawdevelopmenttool.activity.wastepaper.WastepaperBasketActivity;
 import com.newbee.drawdevelopmenttool.adapters.HeadSetContentAdapter;
@@ -25,6 +26,7 @@ public class DrawingHeadSetPopupWindow extends BasePopupWindow {
             if(TextUtils.isEmpty(headSetContent)){
                 return;
             }
+            hide();
             if(headSetContent.equals(BaseApplication.getRsString(R.string.head_set_item_me))){
             }else if(headSetContent.equals(BaseApplication.getRsString(R.string.head_set_item_screen_is_v))){
 //                if(myWindowSet.screenIsLandscape()){
@@ -35,7 +37,7 @@ public class DrawingHeadSetPopupWindow extends BasePopupWindow {
             }else if(headSetContent.equals(BaseApplication.getRsString(R.string.head_set_item_auto_order))){
 
             }else if(headSetContent.equals(BaseApplication.getRsString(R.string.head_set_item_def_config))){
-
+                toActivity(ConfigSetActivity.class);
             }else if(headSetContent.equals(BaseApplication.getRsString(R.string.head_set_item_wastepaper_basket))){
                 toActivity(WastepaperBasketActivity.class);
             }else if(headSetContent.equals(BaseApplication.getRsString(R.string.head_set_item_note_book))){
@@ -47,7 +49,7 @@ public class DrawingHeadSetPopupWindow extends BasePopupWindow {
             }else if(headSetContent.equals(BaseApplication.getRsString(R.string.head_set_item_app_v))){
 //                toActivity(AppVersionActivity.class);
             }else if(headSetContent.equals(BaseApplication.getRsString(R.string.head_set_item_close))){
-                hide();
+
             }
         }
     };
@@ -84,7 +86,7 @@ public class DrawingHeadSetPopupWindow extends BasePopupWindow {
 //                headSetContentList.add(MyApplication.getRsString(R.string.head_set_item_screen_is_v));
 //        headSetContentList.add(MyApplication.getRsString(R.string.head_set_item_auto_order));
 //        headSetContentList.add(MyApplication.getRsString(R.string.head_set_item_note_book));
-//        headSetContentList.add(MyApplication.getRsString(R.string.head_set_item_def_config));
+        headSetContentList.add(BaseApplication.getRsString(R.string.head_set_item_def_config));
         headSetContentList.add(BaseApplication.getRsString(R.string.head_set_item_wastepaper_basket));
 //        headSetContentList.add(MyApplication.getRsString(R.string.head_set_item_app_v));
 //        headSetContentList.add(MyApplication.getRsString(R.string.head_set_item_system_v));

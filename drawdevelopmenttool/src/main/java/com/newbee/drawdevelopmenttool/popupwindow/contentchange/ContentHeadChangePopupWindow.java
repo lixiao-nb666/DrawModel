@@ -4,20 +4,15 @@ import android.content.Context;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.lixiao.build.gson.MyGson;
-import com.lixiao.build.mybase.LG;
 import com.lixiao.build.mybase.ToastUtil;
-import com.lixiao.build.mybase.activity.BaseCompatActivity;
 import com.lixiao.build.mybase.activity.util.ActivityUtil;
 import com.lixiao.build.mybase.appliction.BaseApplication;
 import com.lixiao.build.mybase.popupwindow.BasePopupWindow;
-import com.lixiao.build.mybase.popupwindow.BasePoputWindowListen;
 import com.newbee.drawdevelopmenttool.R;
 import com.newbee.drawdevelopmenttool.activity.pushout.ContentPushOutSetActivity;
 import com.newbee.drawdevelopmenttool.activity.update.UpdateContentHeadFileFolderActivity;
 import com.newbee.drawdevelopmenttool.activity.update.UpdateContentHeadNoteBookActivity;
-import com.newbee.drawdevelopmenttool.bean.content.ContentBean;
 import com.newbee.drawdevelopmenttool.bean.content.ContentHeadBean;
 import com.newbee.drawdevelopmenttool.share.DrawShare;
 import com.newbee.drawdevelopmenttool.sql.content.ContentHeadSqlServer;
@@ -60,10 +55,7 @@ public class ContentHeadChangePopupWindow extends BasePopupWindow {
 
                 }
             }else if(v.getId()== R.id.bt_push_out){
-                ContentBean pushOutContentBean = DrawShare.getInstance().getContentBean(contentHeadBean);
-                if(null!=pushOutContentBean){
                     ActivityUtil.toActivity(context,ContentPushOutSetActivity.class, MyGson.getInstance().toGsonStr(contentHeadBean));
-                }
                 hide();
             }else if(v.getId()==R.id.bt_retrun){
                 hide();

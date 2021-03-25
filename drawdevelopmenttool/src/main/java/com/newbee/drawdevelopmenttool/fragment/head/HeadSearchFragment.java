@@ -41,7 +41,9 @@ public class HeadSearchFragment extends BaseHeadFragment {
     private View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
+            if(v.getId()==R.id.iv_start_search){
+                setResultContentHeadBean(startSearchGetList(searchContentHeadET.getEditableText().toString()));
+            }
 
 
         }

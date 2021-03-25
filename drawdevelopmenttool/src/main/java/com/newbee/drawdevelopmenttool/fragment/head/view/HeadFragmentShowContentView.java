@@ -27,9 +27,6 @@ import com.newbee.drawdevelopmenttool.bean.content.ContentHeadBean;
 import com.newbee.drawdevelopmenttool.bean.content.ContentHeadSortType;
 import com.newbee.drawdevelopmenttool.bean.content.ResultContentHeadBean;
 import com.newbee.drawdevelopmenttool.config.MyDrawBoardConfig;
-import com.newbee.drawdevelopmenttool.eventbus.EventBusObserver;
-import com.newbee.drawdevelopmenttool.eventbus.EventBusSubscriptionSubject;
-import com.newbee.drawdevelopmenttool.eventbus.EventType;
 import com.newbee.drawdevelopmenttool.fragment.head.BaseHeadFragment;
 import com.newbee.drawdevelopmenttool.fragment.head.HeadFragmentNeedListen;
 import com.newbee.drawdevelopmenttool.fragment.head.adapter.BaseContentHeadAdapter;
@@ -41,7 +38,7 @@ import com.newbee.drawdevelopmenttool.popupwindow.contentchange.ContentHeadChang
 import com.newbee.drawdevelopmenttool.popupwindow.selectaddcontentheadtype.SelectAddContentHeadTypePopupWindow;
 import com.newbee.drawdevelopmenttool.share.DrawShare;
 import com.newbee.drawdevelopmenttool.sql.content.ContentHeadSqlServer;
-import com.newbee.drawdevelopmenttool.util.draw.thread.SaveBitMapConfig;
+import com.newbee.drawdevelopmenttool.draw.save.SaveBitMapConfig;
 import com.newbee.drawdevelopmenttool.util.event.contentheaddorbs.ContentHeadDoRbsEventBusObserver;
 import com.newbee.drawdevelopmenttool.util.event.contentheaddorbs.ContentHeadDoRbsEventBusSubscriptionSubject;
 import com.newbee.drawdevelopmenttool.util.event.contentheaddorbs.ContentHeadDoRbsEventType;
@@ -239,13 +236,17 @@ public class HeadFragmentShowContentView {
             if(cls==ContentHeadBean.class) {
                 ContentHeadBean updateContentHeadBean = (ContentHeadBean) object;
                 int updatePositon = resultContentHeadBean.getPosition(updateContentHeadBean);
-                updatePositon=updatePositon%listAdapter.getCanShowMaxNumb();
+                int needUpdateShowIndex=updatePositon%listAdapter.getCanShowMaxNumb();
+
                 switch (contentType){
                     case MANUSCRIPTS:
+                        LG.i(tag,"=========kankanupdatePositon:"+updatePositon);
+                        LG.i(tag,"=========kankanupdatePositon:"+updateContentHeadBean);
                         if (updatePositon != -1) {
+
                             resultContentHeadBean.getContentHeadBeanList().remove(updatePositon);
                             resultContentHeadBean.getContentHeadBeanList().add(updatePositon, updateContentHeadBean);
-                            listAdapter.notifyItemChanged(updatePositon+1);
+                            listAdapter.notifyItemChanged(needUpdateShowIndex+1);
                         }
                         break;
                     case FAVORITES:
@@ -255,7 +256,7 @@ public class HeadFragmentShowContentView {
                         if (updatePositon != -1) {
                             resultContentHeadBean.getContentHeadBeanList().remove(updatePositon);
                             resultContentHeadBean.getContentHeadBeanList().add(updatePositon, updateContentHeadBean);
-                            listAdapter.notifyItemChanged(updatePositon);
+                            listAdapter.notifyItemChanged(needUpdateShowIndex);
                         }
                         break;
                 }

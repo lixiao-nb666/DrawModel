@@ -160,8 +160,10 @@ public class BaseContentHeadAdapter extends RecyclerView.Adapter {
                     break;
             }
             if(TextUtils.isEmpty(imageUrl)){
+                LG.i(tag,"kankansetshi1haishi2:1");
                 MyGlide.getInstance().setBitMap(viewHodler.contentBgIV,rsId);
             }else {
+                LG.i(tag,"kankansetshi1haishi2:2");
                 MyGlide.getInstance().setBitMapNoCache(viewHodler.contentBgIV,imageUrl);
             }
             viewHodler.starIV.setVisibility(View.VISIBLE);
@@ -244,7 +246,6 @@ public class BaseContentHeadAdapter extends RecyclerView.Adapter {
         public ViewHodler(View itemView) {
             super(itemView);
             contentBgIV = itemView.findViewById(R.id.iv_manuscripts_content_bg);
-            contentBgIV.setScaleType(ImageView.ScaleType.CENTER);
             contentNameTV = itemView.findViewById(R.id.tv_manuscripts_content_name);
             contentTimeTV = itemView.findViewById(R.id.tv_manuscripts_content_time);
             contentLL = itemView.findViewById(R.id.ll_manuscripts_content);

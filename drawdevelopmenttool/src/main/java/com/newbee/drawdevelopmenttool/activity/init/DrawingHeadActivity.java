@@ -121,7 +121,7 @@ public class DrawingHeadActivity extends BaseCompatActivity {
 
     @Override
     public void initData() {
-        setIV.setImageResource(R.drawable.head_set);
+        setIV.setImageResource(R.drawable.launcher_setting);
         fragmentList = new ArrayList<>();
         fragmentList.add(new HeadManuscriptsFragment());
         fragmentList.add(new HeadSearchFragment());

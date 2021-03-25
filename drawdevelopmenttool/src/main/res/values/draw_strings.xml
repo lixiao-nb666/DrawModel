@@ -102,4 +102,14 @@
     <string name="update_file_folder">修改文件夹</string>
     <string name="look_content">查看内容</string>
     <string name="no_to_class">没有可以去的页面</string>
+    <string name="show_content_head_type">显示封面的方式</string>
+    <string name="scroll_rv">上下滑动</string>
+    <string name="scroll_pager">翻页</string>
+    <string name="add_content_head_type">添加封面的方式</string>
+    <string name="popupwindow">弹窗</string>
+    <string name="new_activity">新页面</string>
+    <string name="search_need_rbs">是否搜索废纸篓内容</string>
+    <string name="str_true">是</string>
+    <string name="str_false">否</string>
+    <string name="set_ok_need_restart">设置成功,需要重启</string>
 </resources>

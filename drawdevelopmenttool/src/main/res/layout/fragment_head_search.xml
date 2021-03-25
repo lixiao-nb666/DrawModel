@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="153px"
+        android:layout_marginTop="66px"
         android:text="@string/head_search"
         android:textColor="@color/black"
         android:textSize="61px" />
@@ -19,12 +19,12 @@
     <LinearLayout
         android:id="@+id/ll_search"
         android:layout_width="match_parent"
-        android:layout_height="120px"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/tv_head_title"
         android:layout_marginLeft="60px"
-        android:layout_marginTop="22px"
+        android:layout_marginTop="8px"
         android:layout_marginRight="60px"
-
+        android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <ImageView
@@ -38,7 +38,7 @@
         <EditText
             android:id="@+id/et_search_content_head"
             android:layout_width="0px"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="@string/head_search"
             android:textColor="@color/black"

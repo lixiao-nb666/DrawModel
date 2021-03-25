@@ -49,7 +49,7 @@ public class UpdateContentHeadNoteBookActivity extends BaseCompatActivity {
     };
 
     private RadioGroup bgRG;
-    private boolean defScreen;
+
     private    RadioGroup selectSCreenRG;
     private RadioButton autoTV,horizotalTV,vercatalTV,selectTV;
 

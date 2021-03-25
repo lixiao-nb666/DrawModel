@@ -113,6 +113,9 @@ public class ManuscriptsContentPagerAdapter extends BaseContentHeadAdapter{
     @Override
     public int getCanShowMaxNumb(){
         int canShowNumb=9;
+        if(showModelType==ManuscriptsContentShowModelType.LIST){
+            canShowNumb=7;
+        }
         if(adapterNeedAddContent){
             canShowNumb--;
         }

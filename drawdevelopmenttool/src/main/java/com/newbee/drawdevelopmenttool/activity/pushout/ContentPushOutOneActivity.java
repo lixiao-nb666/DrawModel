@@ -4,15 +4,14 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.lixiao.build.glide.MyGlide;
 import com.lixiao.build.gson.MyGson;
 import com.lixiao.build.mybase.activity.BaseCompatActivity;
-
 import com.lixiao.build.mybase.appliction.MyApplicationFile;
 import com.newbee.drawdevelopmenttool.R;
-import com.newbee.drawdevelopmenttool.bean.content.ContentBean;
-
+import com.newbee.drawdevelopmenttool.bean.content.ContentHeadBean;
+import com.newbee.drawdevelopmenttool.bean.content.ContentPagerBean;
+import com.newbee.drawdevelopmenttool.share.DrawShare;
 
 import java.io.File;
 
@@ -59,7 +58,7 @@ public class ContentPushOutOneActivity extends BaseCompatActivity {
                     showNumb = 1;
                 }
             }else if(v.getId()==R.id.iv_next_pager){
-                int cpnn = contentBean.getCountPagerNumb();
+                int cpnn = pagerBean.getCountPagerNumb();
                 showNumb++;
                 if ( showNumb > cpnn) {
                     showNumb = cpnn;
@@ -72,7 +71,8 @@ public class ContentPushOutOneActivity extends BaseCompatActivity {
     };
 
 
-    private ContentBean contentBean;
+    private ContentHeadBean headBean;
+    private ContentPagerBean pagerBean;
     @Override
     public int getViewLayoutRsId() {
         return R.layout.activity_push_out_one;
@@ -90,14 +90,15 @@ public class ContentPushOutOneActivity extends BaseCompatActivity {
     public void initData() {
         String intentString=getIntentString();
         if(!TextUtils.isEmpty(intentString)){
-            contentBean= MyGson.getInstance().fromJson(intentString, ContentBean.class);
+            headBean= MyGson.getInstance().fromJson(intentString,ContentHeadBean.class);
         }
-        if(null==contentBean){
+        if(null==headBean){
             finish();
             return;
         }
+        pagerBean= DrawShare.getInstance().getContentPagerBean(headBean.getId());
         TextView titleTV=findViewById(R.id.tv_title);
-        titleTV.setText(titleTV.getText()+"("+contentBean.getContentHeadBean().getName()+")");
+        titleTV.setText(titleTV.getText()+"("+headBean.getName()+")");
 
         lastIV.setImageResource(R.drawable.icon_last_pager);
         nextIV.setImageResource(R.drawable.icon_next_pager);
@@ -105,7 +106,7 @@ public class ContentPushOutOneActivity extends BaseCompatActivity {
         nextIV.setOnClickListener(pagerChangeClick);
         findViewById(R.id.bt_push_out).setOnClickListener(overClickListener);
         findViewById(R.id.bt_cancel).setOnClickListener(overClickListener);
-        showNumb= contentBean.getInItBean().getShowPagerNumb();
+        showNumb= pagerBean.getShowPagerNumb();
         showTextPager();
     }
 
@@ -136,10 +137,8 @@ public class ContentPushOutOneActivity extends BaseCompatActivity {
 
 
     private void showTextPager(){
-        if(null==contentBean||null==contentBean.getInItBean()){
-            return;
-        }
-        int countPagerNumb=contentBean.getCountPagerNumb();
+
+        int countPagerNumb=pagerBean.getCountPagerNumb();
 
         if(showNumb>countPagerNumb){
             showNumb=countPagerNumb;
@@ -148,7 +147,7 @@ public class ContentPushOutOneActivity extends BaseCompatActivity {
             showNumb=1;
         }
         pagerTV.setText(showNumb+"/"+countPagerNumb);
-        String fileName=contentBean.getFileName(showNumb);
+        String fileName=headBean.getFileName(showNumb);
         String filePath=  MyApplicationFile.getInstance().getPic_files() + File.separator + fileName;
         MyGlide.getInstance().setBitMapNoCache(showPagerIV,filePath);
     }

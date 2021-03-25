@@ -8,9 +8,14 @@ import com.newbee.drawdevelopmenttool.bean.content.ContentHeadBean;
 import com.newbee.drawdevelopmenttool.bean.content.ContentHeadType;
 import com.newbee.drawdevelopmenttool.config.type.AddContentHeadType;
 import com.newbee.drawdevelopmenttool.config.type.ShowContentHeadType;
+import com.newbee.drawdevelopmenttool.draw.base.BaseDrawType;
+import com.newbee.drawdevelopmenttool.draw.base.BaseDrawView;
+import com.newbee.drawdevelopmenttool.draw.base.BaseDrawViewFunctionType;
 import com.newbee.drawdevelopmenttool.share.DrawShare;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -24,6 +29,8 @@ public class  MyDrawBoardConfig {
     public static ShowContentHeadType defShowContentHeadType=ShowContentHeadType.RV;
     public static boolean defSearchNeedDelect=false;
     public static UserPrivateAgreemeetInfoBean userPrivateAgreemeetInfoBean;
+    public static List<BaseDrawType>canUseDrawTypeList=new ArrayList<>();
+    public static List<BaseDrawViewFunctionType>canUseFunctionTypeList=new ArrayList<>();
 
 
 

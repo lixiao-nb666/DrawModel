@@ -13,7 +13,7 @@ import com.newbee.drawdevelopmenttool.R;
 import com.newbee.drawdevelopmenttool.activity.pushout.ContentPushOutSetActivity;
 import com.newbee.drawdevelopmenttool.activity.update.UpdateContentHeadFileFolderActivity;
 import com.newbee.drawdevelopmenttool.activity.update.UpdateContentHeadNoteBookActivity;
-import com.newbee.drawdevelopmenttool.bean.content.ContentBean;
+
 import com.newbee.drawdevelopmenttool.bean.content.ContentHeadBean;
 
 import com.newbee.drawdevelopmenttool.share.DrawShare;
@@ -56,11 +56,11 @@ public class ContentHeadChangeActivity extends BaseCompatActivity {
                     showToast(getString(R.string.to_rbs_err));
                 }
             }else if(v.getId()== R.id.bt_push_out){
-                ContentBean pushOutContentBean = DrawShare.getInstance().getContentBean(contentHeadBean);
-                if(null!=pushOutContentBean){
-                    toActivity(ContentPushOutSetActivity.class, MyGson.getInstance().toGsonStr(pushOutContentBean));
-                }
-                finish();
+//                ContentBean pushOutContentBean = DrawShare.getInstance().getContentBean(contentHeadBean);
+//                if(null!=pushOutContentBean){
+//                    toActivity(ContentPushOutSetActivity.class, MyGson.getInstance().toGsonStr(pushOutContentBean));
+//                }
+//                finish();
             }else if(v.getId()==R.id.bt_retrun){
                 finish();
             }
@@ -74,6 +74,10 @@ public class ContentHeadChangeActivity extends BaseCompatActivity {
     @Override
     public void initView() {
         titleTV=findViewById(R.id.tv_title);
+        updateBT=view.findViewById(R.id.bt_change_content_head);
+        toRbsBT=view.findViewById(R.id.bt_to_rbs);
+        pushOutBT=view.findViewById(R.id.bt_push_out);
+        retrunBT=view.findViewById(R.id.bt_retrun);
     }
 
     @Override
