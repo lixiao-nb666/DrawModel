@@ -102,6 +102,7 @@ public class NoteBookFragment extends BaseDrawViewFragment {
 
     @Override
     protected void viewSetData() {
+        selectIv.setImageResource(DrawFunctionUtil.useDrawTypeGetImgRs(MyDrawBoardConfig.canUseDrawTypeList.get(0)));
         titleRV.setAdapter(drawingTitleAdapter);
     }
 
@@ -111,6 +112,7 @@ public class NoteBookFragment extends BaseDrawViewFragment {
         if(lastDrawTypeIndex>0&&lastDrawTypeIndex<BaseDrawType.values().length){
             BaseDrawType lastDrawType=BaseDrawType.values()[lastDrawTypeIndex];
             itemClick.itemClick(DrawFunctionUtil.useDrawTypeGetImgRs(lastDrawType),-1,lastDrawType);
+            drawingTitleAdapter.setSelectDrawTypeIndex(lastDrawTypeIndex);
         }
         showTextPager();
 

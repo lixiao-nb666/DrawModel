@@ -41,6 +41,11 @@ public class DrawingTitleAdapter extends RecyclerView.Adapter {
         return viewHodler;
     }
 
+    private int selectDrawTypeIndex;
+    public void setSelectDrawTypeIndex(int selectDrawTypeIndex){
+       this.selectDrawTypeIndex=selectDrawTypeIndex;
+    }
+
     private ImageView selectDrawView;
     private ImageView selectFunctionView;
 
@@ -51,6 +56,19 @@ public class DrawingTitleAdapter extends RecyclerView.Adapter {
         if (position < drawTypeList.size()) {
             final BaseDrawType drawType = drawTypeList.get(position);
             final int showRsId = DrawFunctionUtil.useDrawTypeGetImgRs(drawType);
+            if(selectDrawTypeIndex==drawType.ordinal()){
+                selectDrawTypeIndex=-1;
+                if (null != selectDrawView) {
+                    selectDrawView.setSelected(false);
+                }
+                if (null != selectFunctionView) {
+                    selectFunctionView.setSelected(false);
+                    selectFunctionView = null;
+                }
+                selectDrawView = viewHodler.titltIV;
+                selectDrawView.setSelected(true);
+            }
+
             viewHodler.titltIV.setImageResource(showRsId);
             viewHodler.titltIV.setOnClickListener(new View.OnClickListener() {
                 @Override

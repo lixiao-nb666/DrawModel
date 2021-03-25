@@ -23,7 +23,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="18px"
             android:background="@color/black" />
-            <include layout="@layout/draw_view"/>
+            <include layout="@layout/draw_view" />
 
         <View
             android:layout_width="1dp"
