@@ -147,8 +147,8 @@ public class ContentPushOutOneActivity extends BaseCompatActivity {
             showNumb=1;
         }
         pagerTV.setText(showNumb+"/"+countPagerNumb);
-        String fileName=headBean.getFileName(showNumb);
-        String filePath=  MyApplicationFile.getInstance().getPic_files() + File.separator + fileName;
+
+        String filePath= headBean.getLocalFilePath(showNumb);
         MyGlide.getInstance().setBitMapNoCache(showPagerIV,filePath);
     }
 }

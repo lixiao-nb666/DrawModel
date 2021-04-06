@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.lixiao.build.mybase.LG;
 import com.lixiao.build.mybase.activity.userprivate.bean.UserPrivateAgreemeetInfoBean;
 import com.lixiao.build.mybase.appliction.BaseApplication;
 import com.lixiao.down.config.XiaoGeDownLoaderConfig;
@@ -55,18 +56,23 @@ public class MyApplication extends BaseDrawModelApplication {
             }
 
             @Override
-            public void setListen(BaseDrawViewListen listen) {
-
+            public boolean canSaveOrOpen() {
+                return true;
             }
 
+            @Override
+            public void setListen(BaseDrawViewListen listen) {
+            }
             @Override
             public void setDrawType(BaseDrawType drawType, Object... objects) {
-
             }
-
             @Override
             public void setFunctionType(BaseDrawViewFunctionType functionType, Object... objects) {
-
+                if(objects.length>=1){
+                    LG.i(tag,"---------kankansetFunctionType1:"+functionType+"--"+objects[0]);
+                }else {
+                    LG.i(tag,"---------kankansetFunctionType2:"+functionType);
+                }
             }
         };
     }
@@ -74,7 +80,6 @@ public class MyApplication extends BaseDrawModelApplication {
     @Override
     public Class useContentHeadSelectClass(ContentHeadBean contentHead) {
         try {
-
             switch (contentHead.getEnumType()){
                 case NOTE_BOOK:
                     switch (ContentHeadOrientationType.values()[contentHead.getOrientation()]){
@@ -89,7 +94,6 @@ public class MyApplication extends BaseDrawModelApplication {
             }
             return null;
         }catch (Exception e){
-
         }
         return null;
     }

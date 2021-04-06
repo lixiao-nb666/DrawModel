@@ -62,11 +62,88 @@ public class DrawControlUtil {
         baseDrawView.setDrawType(baseDrawType);
     }
 
-    public void setDrawFunctionType(BaseDrawViewFunctionType drawFunctionType){
+    public void setDrawFunctionType(BaseDrawViewFunctionType drawFunctionType,Object... objects){
         if(null==baseDrawView||null==drawFunctionType) {
             return;
         }
-        baseDrawView.setFunctionType(drawFunctionType);
+        baseDrawView.setFunctionType(drawFunctionType,objects);
+        switch (drawFunctionType){
+            case PAGER_ADD:
+                if(baseDrawView.canSaveOrOpen()){
+                    int cpn=pagerBean.getCountPagerNumb();
+                    pagerBean.setCountPagerNumb(cpn+1);
+                    pagerBean.setShowPagerNumb(cpn+1);
+                    pagerBean.saveToShare();
+                    openFile();
+                }
+                break;
+            case LAST_PAGER:
+                if(baseDrawView.canSaveOrOpen()) {
+                    int snl = pagerBean.getShowPagerNumb();
+                    snl--;
+                    if (snl < 1) {
+                        snl = 1;
+                    }
+                    if (pagerBean.getShowPagerNumb() != snl) {
+//                        save(SaveBitMapType.CHANGE_PAGER);
+                       pagerBean.setShowPagerNumb(snl);
+                       pagerBean.saveToShare();
+                        openFile();
+
+                    }
+                }
+                break;
+            case NEXT_PAGER:
+                if(baseDrawView.canSaveOrOpen()) {
+                    int cpnn = pagerBean.getCountPagerNumb();
+                    int snn = pagerBean.getShowPagerNumb();
+                    snn++;
+                    if (snn > cpnn) {
+                        snn = cpnn;
+                    }
+                    if (pagerBean.getShowPagerNumb() != snn) {
+//                        save(SaveBitMapType.CHANGE_PAGER);
+                        pagerBean.setShowPagerNumb(snn);
+                        pagerBean.saveToShare();
+                        openFile();
+                    }
+                }
+                break;
+            case TO_FIRST_PAGER:
+                if(baseDrawView.canSaveOrOpen()) {
+                    int snf = 1;
+                    if (pagerBean.getShowPagerNumb() != snf) {
+//                        save(SaveBitMapType.CHANGE_PAGER);
+                        pagerBean.setShowPagerNumb(snf);
+                        pagerBean.saveToShare();
+                        openFile();
+                    }
+                }
+                break;
+            case TO_BOTTOM_PAGER:
+                if(baseDrawView.canSaveOrOpen()){
+                    int snb=pagerBean.getCountPagerNumb();
+                    if(pagerBean.getShowPagerNumb()!=snb){
+//                        save(SaveBitMapType.CHANGE_PAGER);
+                        pagerBean.setShowPagerNumb(snb);
+                        pagerBean.saveToShare();
+                        openFile();
+                    }
+                }
+
+
+
+                break;
+        }
+    }
+
+
+    public void openFile(){
+        baseDrawView.setFunctionType(BaseDrawViewFunctionType.RESET_DRAW_IMG,headBean.getLocalFilePath(pagerBean.getShowPagerNumb()));
+    }
+
+    public void openFile(String filePath){
+        baseDrawView.setFunctionType(BaseDrawViewFunctionType.RESET_DRAW_IMG,filePath);
     }
 
     public ContentHeadBean getHeadBean() {
