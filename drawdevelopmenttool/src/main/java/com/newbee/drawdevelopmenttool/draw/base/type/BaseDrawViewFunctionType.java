@@ -21,4 +21,6 @@ public enum BaseDrawViewFunctionType {
     REDO,//返回操作
     CLEAR,//清空
     SAVE,//保存
+    DRAW_LINE_SELECT,//画线选择
+    CAN_NOT_DRAW,//禁止画画
 }

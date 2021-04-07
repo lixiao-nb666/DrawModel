@@ -75,6 +75,10 @@ public class DrawFunctionUtil {
                 return R.drawable.icon_clear_all;
             case      SAVE://保存
                 return R.drawable.icon_save;
+            case DRAW_LINE_SELECT:
+                return R.drawable.icon_draw_line_select;
+            case CAN_NOT_DRAW:
+                return R.drawable.icon_can_not_draw;
             default:
                 return R.drawable.icon_no_know;
         }
@@ -109,10 +113,7 @@ public class DrawFunctionUtil {
                 return R.drawable.icon_to_first;
             case TO_BOTTOM_PAGER:
                 return R.drawable.icon_to_bottom;
-            case DRAW_LINE_SELECT:
-                return R.drawable.icon_draw_line_select;
-            case CAN_NOT_DRAW:
-                return R.drawable.icon_can_not_draw;
+
             case PREVIEW:
                 return R.drawable.icon_preview;
             case PUSH_OUT:

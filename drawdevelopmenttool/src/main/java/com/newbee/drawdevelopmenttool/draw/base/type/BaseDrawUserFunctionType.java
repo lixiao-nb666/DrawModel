@@ -30,8 +30,8 @@ public enum  BaseDrawUserFunctionType {
     PAGER_ADD,//加页
     TO_FIRST_PAGER,//去首页
     TO_BOTTOM_PAGER,//去最后一页
-    DRAW_LINE_SELECT,//画线选择
-    CAN_NOT_DRAW,//禁止画画
+
+
     PREVIEW,//预览
     PUSH_OUT,//导出
     PULL_IN,//导入

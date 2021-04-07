@@ -115,8 +115,7 @@ public class MyApplication extends BaseDrawModelApplication {
         MyDrawBoardConfig.canUseDrawTypeList.add(BaseDrawType.OVAL);
         //设置可以用的功能模块
         MyDrawBoardConfig.canUseDrawUserFunctionTypeList.add(BaseDrawUserFunctionType.SET_BACKGOUND);
-        MyDrawBoardConfig.canUseDrawUserFunctionTypeList.add(BaseDrawUserFunctionType.DRAW_LINE_SELECT);
-        MyDrawBoardConfig.canUseDrawUserFunctionTypeList.add(BaseDrawUserFunctionType.CAN_NOT_DRAW);
+
         MyDrawBoardConfig.canUseDrawUserFunctionTypeList.add(BaseDrawUserFunctionType.PREVIEW);
         MyDrawBoardConfig.canUseDrawUserFunctionTypeList.add(BaseDrawUserFunctionType.PUSH_OUT);
         MyDrawBoardConfig.canUseDrawUserFunctionTypeList.add(BaseDrawUserFunctionType.PAGER_ADD);
@@ -124,6 +123,8 @@ public class MyApplication extends BaseDrawModelApplication {
         MyDrawBoardConfig.canUseDrawUserFunctionTypeList.add(BaseDrawUserFunctionType.LAST_PAGER);
         MyDrawBoardConfig.canUseDrawUserFunctionTypeList.add(BaseDrawUserFunctionType.NEXT_PAGER);
         MyDrawBoardConfig.canUseDrawUserFunctionTypeList.add(BaseDrawUserFunctionType.TO_BOTTOM_PAGER);
+        MyDrawBoardConfig.canUseDrawViewFunctionTypeList.add(BaseDrawViewFunctionType.DRAW_LINE_SELECT);
+        MyDrawBoardConfig.canUseDrawViewFunctionTypeList.add(BaseDrawViewFunctionType.CAN_NOT_DRAW);
         MyDrawBoardConfig.canUseDrawViewFunctionTypeList.add(BaseDrawViewFunctionType.UNDO);
         MyDrawBoardConfig.canUseDrawViewFunctionTypeList.add(BaseDrawViewFunctionType.REDO);
         MyDrawBoardConfig.canUseDrawViewFunctionTypeList.add(BaseDrawViewFunctionType.CLEAR);
