@@ -11,8 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.lixiao.build.mybase.LG;
 import com.newbee.drawdevelopmenttool.R;
 
-import com.newbee.drawdevelopmenttool.draw.base.BaseDrawType;
-import com.newbee.drawdevelopmenttool.draw.base.BaseDrawViewFunctionType;
+import com.newbee.drawdevelopmenttool.draw.base.type.BaseDrawType;
+import com.newbee.drawdevelopmenttool.draw.base.type.BaseDrawUserFunctionType;
+import com.newbee.drawdevelopmenttool.draw.base.type.BaseDrawViewFunctionType;
 import com.newbee.drawdevelopmenttool.draw.base.DrawFunctionUtil;
 
 
@@ -23,13 +24,15 @@ public class DrawingTitleAdapter extends RecyclerView.Adapter {
     private String tag = getClass().getName() + ">>>>";
     private LayoutInflater layoutInflater;
     private List<BaseDrawType> drawTypeList;
-    private List<BaseDrawViewFunctionType> functionTypeList;
+    private List<BaseDrawViewFunctionType> drawFunctionTypeList;
+    private List<BaseDrawUserFunctionType> drawUserFunctionTypeList;
     private ItemClick itemClick;
 
-    public DrawingTitleAdapter(Context context, List<BaseDrawType> drawTypeList, List<BaseDrawViewFunctionType> titleFunctionList, ItemClick itemClick) {
+    public DrawingTitleAdapter(Context context, List<BaseDrawType> drawTypeList, List<BaseDrawViewFunctionType> titleFunctionList, List<BaseDrawUserFunctionType> drawUserFunctionTypeList,ItemClick itemClick) {
         layoutInflater = LayoutInflater.from(context);
         this.drawTypeList = drawTypeList;
-        this.functionTypeList = titleFunctionList;
+        this.drawFunctionTypeList= titleFunctionList;
+        this.drawUserFunctionTypeList=drawUserFunctionTypeList;
         this.itemClick = itemClick;
 
     }
@@ -86,10 +89,10 @@ public class DrawingTitleAdapter extends RecyclerView.Adapter {
                 }
             });
 
-        } else {
+        } else if(position < drawTypeList.size()+drawFunctionTypeList.size()){
             int needPosition = position - drawTypeList.size();
-            final BaseDrawViewFunctionType drawFunctionType = functionTypeList.get(needPosition);
-            final int showRsId = DrawFunctionUtil.useFunctionTypeGetImgRs(drawFunctionType);
+            final BaseDrawViewFunctionType drawFunctionType = drawFunctionTypeList.get(needPosition);
+            final int showRsId = DrawFunctionUtil.useDrawViewFunctionTypeGetImgRs(drawFunctionType);
             viewHodler.titltIV.setImageResource(showRsId);
             viewHodler.titltIV.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -102,6 +105,22 @@ public class DrawingTitleAdapter extends RecyclerView.Adapter {
                     itemClick.itemClick(showRsId, position, drawFunctionType);
                 }
             });
+        }else {
+            int needPosition = position - drawTypeList.size()-drawFunctionTypeList.size();
+            final BaseDrawUserFunctionType drawUserFunctionType = drawUserFunctionTypeList.get(needPosition);
+            final int showRsId = DrawFunctionUtil.useDrawUserFunctionTypeGetImgRs(drawUserFunctionType);
+            viewHodler.titltIV.setImageResource(showRsId);
+            viewHodler.titltIV.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (null != selectFunctionView) {
+                        selectFunctionView.setSelected(false);
+                    }
+                    selectFunctionView = viewHodler.titltIV;
+                    selectFunctionView.setSelected(true);
+                    itemClick.itemClick(showRsId, position, drawUserFunctionType);
+                }
+            });
         }
 
 
@@ -109,7 +128,7 @@ public class DrawingTitleAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return drawTypeList.size() + functionTypeList.size();
+        return drawTypeList.size() + drawFunctionTypeList.size()+drawUserFunctionTypeList.size();
     }
 
 
@@ -126,5 +145,7 @@ public class DrawingTitleAdapter extends RecyclerView.Adapter {
         void itemClick(int rsId, int positon, BaseDrawType baseDrawType);
 
         void itemClick(int rsId, int positon, BaseDrawViewFunctionType drawFunctionType);
+
+        void itemClick(int rsId, int positon,BaseDrawUserFunctionType drawUserFunctionType);
     }
 }

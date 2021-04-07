@@ -46,4 +46,36 @@ public enum NoteBookBgType {
                 return R.drawable.eink_bg_note_book_white_v;
         }
     }
+
+
+    public static int getTempRsId(int  noteBookBgTypeInt){
+        try {
+
+            NoteBookBgType noteBookBgType=NoteBookBgType.values()[noteBookBgTypeInt];
+            return getTempRsId(noteBookBgType);
+        }catch (Exception e){
+            return 0;
+        }
+
+
+    }
+
+    public static int getTempRsId(NoteBookBgType noteBookBgType){
+        if(null==noteBookBgType){
+            return 0;
+        }
+        switch (noteBookBgType){
+            case LIST:
+                return R.drawable.eink_bg_note_book_list_v_temp;
+            case GRIL:
+                return R.drawable.eink_bg_note_book_grild_v_temp;
+            case PINYIN:
+                return R.drawable.eink_bg_note_book_pinyin_v_temp;
+            case TIANZI:
+                return R.drawable.eink_bg_note_book_tianzi_v_temp;
+            case NONE:
+            default:
+                return R.drawable.eink_bg_note_book_white_v_temp;
+        }
+    }
 }

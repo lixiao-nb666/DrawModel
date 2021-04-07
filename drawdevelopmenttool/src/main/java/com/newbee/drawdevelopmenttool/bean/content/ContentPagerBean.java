@@ -1,14 +1,20 @@
 package com.newbee.drawdevelopmenttool.bean.content;
 
+import android.util.ArrayMap;
+
 import com.newbee.drawdevelopmenttool.share.DrawShare;
 import com.newbee.drawdevelopmenttool.sql.content.ContentHeadSqlServer;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ContentPagerBean implements Serializable {
+    private long id;
     private long headId;
     private int showPagerNumb;
     private int countPagerNumb;
+    private Map<String,Integer>drawBgMap=new HashMap<>();
 
     public ContentPagerBean(long headId) {
         this.headId=headId;
@@ -53,16 +59,33 @@ public class ContentPagerBean implements Serializable {
         this.headId = headId;
     }
 
+    public Map<String, Integer> getDrawBgMap() {
+        if(null==drawBgMap){
+            drawBgMap=new HashMap<>();
+        }
+        return drawBgMap;
+    }
+
+    public void setDrawBgMap(Map<String, Integer> drawBgMap) {
+        this.drawBgMap = drawBgMap;
+        if(null==this.drawBgMap){
+            this.drawBgMap=new HashMap<>();
+        }
+    }
+
     @Override
     public String toString() {
         return "ContentPagerBean{" +
                 "headId=" + headId +
                 ", showPagerNumb=" + showPagerNumb +
                 ", countPagerNumb=" + countPagerNumb +
+                ", drawBgMap=" + drawBgMap +
                 '}';
     }
 
     public void saveToShare(){
         DrawShare.getInstance().putContentPagerBean(this);
     }
+
+
 }

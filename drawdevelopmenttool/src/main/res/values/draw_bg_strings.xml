@@ -1,0 +1,7 @@
+<resources>
+
+    <string name="show_bg_title">选择一个背景</string>
+    <string name="set_one_pager">设置单页</string>
+    <string name="set_def_pager">设置默认</string>
+    <string name="set_all_pager">设置全部</string>
+</resources>

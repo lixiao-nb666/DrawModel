@@ -1,9 +1,10 @@
-package com.newbee.drawdevelopmenttool.draw.base;
+package com.newbee.drawdevelopmenttool.draw.base.type;
 
 /**
  * @author lixiaogege!
  * @description: one day day ,no zuo no die !
  * @date :2020/8/28 0028 10:50
+ *  畫筆基本類型
  */
 public enum BaseDrawType {
     PEN,//钢笔，根据压感，调节粗细，粗细渐变比较慢

@@ -1,6 +1,9 @@
-package com.newbee.drawdevelopmenttool.draw.base;
+package com.newbee.drawdevelopmenttool.draw.base.view;
 
 import android.view.View;
+
+import com.newbee.drawdevelopmenttool.draw.base.type.BaseDrawType;
+import com.newbee.drawdevelopmenttool.draw.base.type.BaseDrawViewFunctionType;
 
 /**
  * @author lixiaogege!
@@ -17,5 +20,5 @@ public interface BaseDrawView {
 
     public void setDrawType(BaseDrawType drawType, Object... objects);
 
-    public void setFunctionType(BaseDrawViewFunctionType functionType,Object... objects);
+    public void setFunctionType(BaseDrawViewFunctionType functionType, Object... objects);
 }

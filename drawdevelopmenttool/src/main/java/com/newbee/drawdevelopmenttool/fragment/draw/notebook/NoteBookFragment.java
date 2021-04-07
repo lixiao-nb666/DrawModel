@@ -5,22 +5,21 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.lixiao.build.mybase.LG;
 import com.newbee.drawdevelopmenttool.R;
 import com.newbee.drawdevelopmenttool.application.BaseDrawModelApplication;
 import com.newbee.drawdevelopmenttool.bean.content.ContentHeadBean;
 import com.newbee.drawdevelopmenttool.bean.content.ContentInItBean;
 import com.newbee.drawdevelopmenttool.bean.content.ContentPagerBean;
 import com.newbee.drawdevelopmenttool.config.MyDrawBoardConfig;
-import com.newbee.drawdevelopmenttool.draw.base.BaseDrawType;
-import com.newbee.drawdevelopmenttool.draw.base.BaseDrawView;
-import com.newbee.drawdevelopmenttool.draw.base.BaseDrawViewFunctionType;
-import com.newbee.drawdevelopmenttool.draw.base.BaseDrawViewListen;
+import com.newbee.drawdevelopmenttool.draw.base.type.BaseDrawType;
+import com.newbee.drawdevelopmenttool.draw.base.type.BaseDrawUserFunctionType;
+import com.newbee.drawdevelopmenttool.draw.base.view.BaseDrawView;
+import com.newbee.drawdevelopmenttool.draw.base.type.BaseDrawViewFunctionType;
 import com.newbee.drawdevelopmenttool.draw.base.DrawFunctionUtil;
 import com.newbee.drawdevelopmenttool.fragment.draw.base.BaseDrawViewFragment;
 import com.newbee.drawdevelopmenttool.fragment.draw.notebook.adapter.DrawingTitleAdapter;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author lixiaogege!
@@ -41,32 +40,18 @@ public class NoteBookFragment extends BaseDrawViewFragment {
 
         @Override
         public void itemClick(int rsId, int positon,BaseDrawViewFunctionType drawFunctionType) {
-
             selectIv.setImageResource(rsId);
-            drawControlUtil.setDrawFunctionType(drawFunctionType);
-//            drawFunctionSlect(drawFunctionType);
-            switch (drawFunctionType){
-                case PAGER_ADD:
-                case TO_FIRST_PAGER:
-                case TO_BOTTOM_PAGER:
-                case LAST_PAGER:
-                case NEXT_PAGER:
-                    showTextPager();
-                    break;
-                case PREVIEW:
-//                    toActivity(LookContentActivity.class, MyGson.getInstance().toGsonStr(contentBean));
-                    break;
-                case PUSH_OUT:
-//                    toActivity(ContentPushOutSetActivity.class, MyGson.getInstance().toGsonStr(contentBean));
-                    break;
-            }
+            drawControlUtil.setDrawViewFunction(drawFunctionType);
+        }
+
+        @Override
+        public void itemClick(int rsId, int positon, BaseDrawUserFunctionType drawUserFunctionType) {
+            selectIv.setImageResource(rsId);
+            drawControlUtil.setDrawUserFunctionType(drawUserFunctionType);
         }
     };
 
-    private void showTextPager(){
 
-        pagerNumbTV.setText(drawControlUtil.getPagerBean().getShowPagerNumb()+"/"+drawControlUtil.getPagerBean().getCountPagerNumb());
-    }
 
 
     public NoteBookFragment(ContentHeadBean contentHeadBean) {
@@ -94,7 +79,7 @@ public class NoteBookFragment extends BaseDrawViewFragment {
     @Override
     protected void bindData() {
 
-        drawingTitleAdapter = new DrawingTitleAdapter(getContext(),MyDrawBoardConfig.canUseDrawTypeList, MyDrawBoardConfig.canUseFunctionTypeList, itemClick);
+        drawingTitleAdapter = new DrawingTitleAdapter(getContext(),MyDrawBoardConfig.canUseDrawTypeList, MyDrawBoardConfig.canUseDrawViewFunctionTypeList,MyDrawBoardConfig.canUseDrawUserFunctionTypeList, itemClick);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         titleRV.setLayoutManager(linearLayoutManager);
@@ -114,10 +99,6 @@ public class NoteBookFragment extends BaseDrawViewFragment {
             itemClick.itemClick(DrawFunctionUtil.useDrawTypeGetImgRs(lastDrawType),-1,lastDrawType);
             drawingTitleAdapter.setSelectDrawTypeIndex(lastDrawTypeIndex);
         }
-        showTextPager();
-
-
-
 
     }
 
@@ -142,4 +123,14 @@ public class NoteBookFragment extends BaseDrawViewFragment {
     protected void drawClose() {
 
     }
+
+    @Override
+    protected void setShowPagerText(int showPagerNumb, int countPagerNumb) {
+        if(null!=pagerNumbTV){
+            pagerNumbTV.setText(showPagerNumb+"/"+countPagerNumb);
+        }
+        LG.i("setShowPagerText","setShowPagerText:"+showPagerNumb+"---"+countPagerNumb);
+    }
+
+
 }

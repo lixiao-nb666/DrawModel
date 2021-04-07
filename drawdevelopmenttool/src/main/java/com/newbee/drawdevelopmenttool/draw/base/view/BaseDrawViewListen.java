@@ -1,4 +1,4 @@
-package com.newbee.drawdevelopmenttool.draw.base;
+package com.newbee.drawdevelopmenttool.draw.base.view;
 
 import com.newbee.drawdevelopmenttool.draw.type.OpenFileNeedDoType;
 import com.newbee.drawdevelopmenttool.draw.type.SaveBitMapType;

@@ -183,7 +183,6 @@ public class BaseContentHeadAdapter extends RecyclerView.Adapter {
                 @Override
                 public void onClick(View v) {
                     contentHeadBean.setClickNumb(contentHeadBean.getClickNumb() + 1);
-
                     itemClick.itemClick(v,position, contentHeadBean, ItemClickType.CONTENT);
 
 

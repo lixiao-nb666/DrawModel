@@ -6,8 +6,7 @@ import com.lixiao.build.mybase.appliction.BaseApplication;
 import com.lixiao.down.config.XiaoGeDownLoaderConfig;
 import com.lixiao.down.manager.XiaoGeDownLoaderManager;
 import com.newbee.drawdevelopmenttool.bean.content.ContentHeadBean;
-import com.newbee.drawdevelopmenttool.bean.content.ContentHeadType;
-import com.newbee.drawdevelopmenttool.draw.base.BaseDrawView;
+import com.newbee.drawdevelopmenttool.draw.base.view.BaseDrawView;
 
 /**
  * @author lixiaogege!

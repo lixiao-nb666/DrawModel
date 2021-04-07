@@ -2,6 +2,9 @@ package com.newbee.drawdevelopmenttool.draw.base;
 
 
 import com.newbee.drawdevelopmenttool.R;
+import com.newbee.drawdevelopmenttool.draw.base.type.BaseDrawType;
+import com.newbee.drawdevelopmenttool.draw.base.type.BaseDrawUserFunctionType;
+import com.newbee.drawdevelopmenttool.draw.base.type.BaseDrawViewFunctionType;
 
 public class DrawFunctionUtil {
 
@@ -48,24 +51,18 @@ public class DrawFunctionUtil {
         }
     }
 
-    public static int useFunctionTypeGetImgRs(BaseDrawViewFunctionType drawFunctionType){
+    public static int useDrawViewFunctionTypeGetImgRs(BaseDrawViewFunctionType drawFunctionType){
         switch (drawFunctionType){
-            case  SELECT_COLOR://选择颜色
-//                return R.drawable.icon_select_color;
-//                return R.drawable.launcher_color_select ;
             case SET_COLOR:
                 return R.drawable.icon_set_color;
             case SET_SIZE:
                 return R.drawable.icon_set_size;
-
             case       CHANGE_DOTTED_LINE://切换虚实线
                 return R.drawable.icon_dotted_line;
             case       ADD_IMG://添加图片
                 return R.drawable.icon_add_img;
             case      RESET_DRAW_IMG://重设画画的图片，前面所有的画笔全部清空，并且这张图片为全屏
                 return R.drawable.icon_reset_img;
-            case      SET_BACKGOUND://设置背景
-                return R.drawable.icon_change_backgound;
             case       TAKE_PHOTO://拍照
                 return R.drawable.icon_take_photo;
             case       ADD_TEXT://添加文字
@@ -78,6 +75,18 @@ public class DrawFunctionUtil {
                 return R.drawable.icon_clear_all;
             case      SAVE://保存
                 return R.drawable.icon_save;
+            default:
+                return R.drawable.icon_no_know;
+        }
+    }
+
+
+
+    public static int useDrawUserFunctionTypeGetImgRs(BaseDrawUserFunctionType drawUserFunctionType){
+        switch (drawUserFunctionType){
+            case      SET_BACKGOUND://设置背景
+                return R.drawable.icon_change_backgound;
+
             case      USER://用户
                 return R.drawable.icon_user;
             case       SETTING://设置
@@ -102,8 +111,6 @@ public class DrawFunctionUtil {
                 return R.drawable.icon_to_bottom;
             case DRAW_LINE_SELECT:
                 return R.drawable.icon_draw_line_select;
-            case SELECT_MOVE:
-                return R.drawable.icon_select_move;
             case CAN_NOT_DRAW:
                 return R.drawable.icon_can_not_draw;
             case PREVIEW:
@@ -134,9 +141,5 @@ public class DrawFunctionUtil {
                 return R.drawable.icon_no_know;
         }
     }
-
-
-
-
 
 }

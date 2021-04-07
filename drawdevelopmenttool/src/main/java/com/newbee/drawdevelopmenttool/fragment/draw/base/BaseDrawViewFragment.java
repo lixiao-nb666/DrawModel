@@ -1,18 +1,18 @@
 package com.newbee.drawdevelopmenttool.fragment.draw.base;
 
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+import android.widget.FrameLayout;
 
 import com.lixiao.build.mybase.fragment.BaseFragmen_v4;
 import com.newbee.drawdevelopmenttool.R;
 import com.newbee.drawdevelopmenttool.bean.content.ContentHeadBean;
 import com.newbee.drawdevelopmenttool.bean.content.ContentInItBean;
 import com.newbee.drawdevelopmenttool.bean.content.ContentPagerBean;
-import com.newbee.drawdevelopmenttool.draw.base.BaseDrawView;
-import com.newbee.drawdevelopmenttool.draw.base.BaseDrawViewListen;
+import com.newbee.drawdevelopmenttool.draw.base.view.BaseDrawView;
+import com.newbee.drawdevelopmenttool.draw.base.type.BaseDrawViewFunctionType;
+import com.newbee.drawdevelopmenttool.draw.base.view.BaseDrawViewListen;
 import com.newbee.drawdevelopmenttool.draw.type.OpenFileNeedDoType;
 import com.newbee.drawdevelopmenttool.draw.util.DrawControlUtil;
-import com.newbee.drawdevelopmenttool.share.DrawShare;
+import com.newbee.drawdevelopmenttool.draw.util.DrawControlUtilListen;
 import com.newbee.drawdevelopmenttool.draw.type.SaveBitMapType;
 
 
@@ -47,6 +47,12 @@ public abstract class BaseDrawViewFragment extends BaseFragmen_v4 implements Dra
     };
 
     protected DrawControlUtil drawControlUtil=new DrawControlUtil();
+    private DrawControlUtilListen drawControlUtilListen=new DrawControlUtilListen() {
+        @Override
+        public void needShowPagerText(int showPagerNumb, int countPagerNumb) {
+            setShowPagerText(showPagerNumb,countPagerNumb);
+        }
+    };
     protected abstract int setViewRs();
     protected abstract void bindView();
     protected abstract BaseDrawView getBaseDrawView();
@@ -57,6 +63,7 @@ public abstract class BaseDrawViewFragment extends BaseFragmen_v4 implements Dra
     protected abstract void drawNeedPause();
     protected abstract void drawChangeConfig();
     protected abstract void drawClose();
+    protected abstract void setShowPagerText(int showPagerNumb, int countPagerNumb);
 
 
 
@@ -86,7 +93,7 @@ public abstract class BaseDrawViewFragment extends BaseFragmen_v4 implements Dra
     @Override
     protected void initControl() {
         viewSetData();
-        drawControlUtil.setBaseDrawView((LinearLayout) view.findViewById(R.id.ll_draw_view),baseDrawViewListen);
+        drawControlUtil.setBaseDrawView(drawControlUtilListen,(FrameLayout) view.findViewById(R.id.ll_draw_view),baseDrawViewListen);
     }
 
     @Override
@@ -129,6 +136,8 @@ public abstract class BaseDrawViewFragment extends BaseFragmen_v4 implements Dra
 
     private SaveBitMapType saveBitMapType;
     public void save(SaveBitMapType saveBitMapType){
+        try {
 
+        }catch (Exception e){}
     }
 }

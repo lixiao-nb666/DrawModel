@@ -6,26 +6,20 @@ import android.view.ViewGroup;
 
 import com.lixiao.build.mybase.LG;
 import com.lixiao.build.mybase.activity.userprivate.bean.UserPrivateAgreemeetInfoBean;
-import com.lixiao.build.mybase.appliction.BaseApplication;
-import com.lixiao.down.config.XiaoGeDownLoaderConfig;
-import com.lixiao.down.manager.XiaoGeDownLoaderManager;
 import com.newbee.drawdevelopmenttool.activity.notebook.NoteBookActivity;
 import com.newbee.drawdevelopmenttool.activity.notebook.NoteBookLandscapeActivity;
 import com.newbee.drawdevelopmenttool.activity.notebook.NoteBookPortraitActivity;
 import com.newbee.drawdevelopmenttool.application.BaseDrawModelApplication;
 import com.newbee.drawdevelopmenttool.bean.content.ContentHeadBean;
 import com.newbee.drawdevelopmenttool.bean.content.ContentHeadOrientationType;
-import com.newbee.drawdevelopmenttool.bean.content.ContentHeadType;
 import com.newbee.drawdevelopmenttool.config.type.AddContentHeadType;
 import com.newbee.drawdevelopmenttool.config.MyDrawBoardConfig;
 import com.newbee.drawdevelopmenttool.config.type.ShowContentHeadType;
-import com.newbee.drawdevelopmenttool.draw.base.BaseDrawType;
-import com.newbee.drawdevelopmenttool.draw.base.BaseDrawView;
-import com.newbee.drawdevelopmenttool.draw.base.BaseDrawViewFunctionType;
-import com.newbee.drawdevelopmenttool.draw.base.BaseDrawViewListen;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.newbee.drawdevelopmenttool.draw.base.type.BaseDrawType;
+import com.newbee.drawdevelopmenttool.draw.base.type.BaseDrawUserFunctionType;
+import com.newbee.drawdevelopmenttool.draw.base.view.BaseDrawView;
+import com.newbee.drawdevelopmenttool.draw.base.type.BaseDrawViewFunctionType;
+import com.newbee.drawdevelopmenttool.draw.base.view.BaseDrawViewListen;
 
 
 /**
@@ -119,21 +113,20 @@ public class MyApplication extends BaseDrawModelApplication {
         MyDrawBoardConfig.canUseDrawTypeList.add(BaseDrawType.RECT);
         MyDrawBoardConfig.canUseDrawTypeList.add(BaseDrawType.CIRCLE);
         MyDrawBoardConfig.canUseDrawTypeList.add(BaseDrawType.OVAL);
-
-
-        MyDrawBoardConfig.canUseFunctionTypeList.add(BaseDrawViewFunctionType.DRAW_LINE_SELECT);
-        MyDrawBoardConfig.canUseFunctionTypeList.add(BaseDrawViewFunctionType.CAN_NOT_DRAW);
-        MyDrawBoardConfig.canUseFunctionTypeList.add(BaseDrawViewFunctionType.PREVIEW);
-        MyDrawBoardConfig.canUseFunctionTypeList.add(BaseDrawViewFunctionType.PUSH_OUT);
-        MyDrawBoardConfig.canUseFunctionTypeList.add(BaseDrawViewFunctionType.CLEAR);
-        MyDrawBoardConfig.canUseFunctionTypeList.add(BaseDrawViewFunctionType.PAGER_ADD);
-        MyDrawBoardConfig.canUseFunctionTypeList.add(BaseDrawViewFunctionType.TO_FIRST_PAGER);
-        MyDrawBoardConfig.canUseFunctionTypeList.add(BaseDrawViewFunctionType.LAST_PAGER);
-        MyDrawBoardConfig.canUseFunctionTypeList.add(BaseDrawViewFunctionType.NEXT_PAGER);
-        MyDrawBoardConfig.canUseFunctionTypeList.add(BaseDrawViewFunctionType.TO_BOTTOM_PAGER);
-        MyDrawBoardConfig.canUseFunctionTypeList.add(BaseDrawViewFunctionType.UNDO);
-        MyDrawBoardConfig.canUseFunctionTypeList.add(BaseDrawViewFunctionType.REDO);
-
+        //设置可以用的功能模块
+        MyDrawBoardConfig.canUseDrawUserFunctionTypeList.add(BaseDrawUserFunctionType.SET_BACKGOUND);
+        MyDrawBoardConfig.canUseDrawUserFunctionTypeList.add(BaseDrawUserFunctionType.DRAW_LINE_SELECT);
+        MyDrawBoardConfig.canUseDrawUserFunctionTypeList.add(BaseDrawUserFunctionType.CAN_NOT_DRAW);
+        MyDrawBoardConfig.canUseDrawUserFunctionTypeList.add(BaseDrawUserFunctionType.PREVIEW);
+        MyDrawBoardConfig.canUseDrawUserFunctionTypeList.add(BaseDrawUserFunctionType.PUSH_OUT);
+        MyDrawBoardConfig.canUseDrawUserFunctionTypeList.add(BaseDrawUserFunctionType.PAGER_ADD);
+        MyDrawBoardConfig.canUseDrawUserFunctionTypeList.add(BaseDrawUserFunctionType.TO_FIRST_PAGER);
+        MyDrawBoardConfig.canUseDrawUserFunctionTypeList.add(BaseDrawUserFunctionType.LAST_PAGER);
+        MyDrawBoardConfig.canUseDrawUserFunctionTypeList.add(BaseDrawUserFunctionType.NEXT_PAGER);
+        MyDrawBoardConfig.canUseDrawUserFunctionTypeList.add(BaseDrawUserFunctionType.TO_BOTTOM_PAGER);
+        MyDrawBoardConfig.canUseDrawViewFunctionTypeList.add(BaseDrawViewFunctionType.UNDO);
+        MyDrawBoardConfig.canUseDrawViewFunctionTypeList.add(BaseDrawViewFunctionType.REDO);
+        MyDrawBoardConfig.canUseDrawViewFunctionTypeList.add(BaseDrawViewFunctionType.CLEAR);
     }
 
 }

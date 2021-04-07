@@ -93,6 +93,12 @@
         <activity android:name="com.newbee.drawdevelopmenttool.activity.update.UpdateContentHeadNoteBookActivity"/>
         <activity android:name="com.newbee.drawdevelopmenttool.activity.update.UpdateContentHeadFileFolderActivity"/>
         <activity android:name="com.newbee.drawdevelopmenttool.activity.configset.ConfigSetActivity"/>
+        <activity android:name="com.newbee.drawdevelopmenttool.activity.look.LookContentActivity"/>
+        <activity android:name="com.newbee.drawdevelopmenttool.activity.pushout.ContentPushOutMoreActivity"/>
+        <activity android:name="com.newbee.drawdevelopmenttool.activity.pushout.ContentPushOutAllActivity"/>
+        <activity android:name="com.newbee.drawdevelopmenttool.activity.pushout.ContentPushOutSetActivity"/>
+        <activity android:name="com.newbee.drawdevelopmenttool.activity.pushout.ContentPushOutOneActivity"/>
+
         <activity
             android:name="com.newbee.drawdevelopmenttool.activity.notebook.NoteBookActivity"
             android:configChanges="keyboard|screenSize|orientation|layoutDirection"
@@ -110,6 +116,7 @@
             android:screenOrientation="landscape"
             android:launchMode="singleTop"
             />
+
         <service android:name="com.lixiao.down.service.XiaoGeDownLoaderService"/>
         <service android:name="com.lixiao.oss.service.OssService"/>
         <!-- 画板需要的资源配置结束 -->
