@@ -137,7 +137,7 @@ public abstract class BaseDrawViewFragment extends BaseFragmen_v4 implements Dra
     private SaveBitMapType saveBitMapType;
     public void save(SaveBitMapType saveBitMapType){
         try {
-
+            drawControlUtil.getBaseDrawView().setFunctionType(BaseDrawViewFunctionType.SAVE,saveBitMapType);
         }catch (Exception e){}
     }
 }

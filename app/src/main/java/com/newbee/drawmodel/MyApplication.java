@@ -115,7 +115,6 @@ public class MyApplication extends BaseDrawModelApplication {
         MyDrawBoardConfig.canUseDrawTypeList.add(BaseDrawType.OVAL);
         //设置可以用的功能模块
         MyDrawBoardConfig.canUseDrawUserFunctionTypeList.add(BaseDrawUserFunctionType.SET_BACKGOUND);
-
         MyDrawBoardConfig.canUseDrawUserFunctionTypeList.add(BaseDrawUserFunctionType.PREVIEW);
         MyDrawBoardConfig.canUseDrawUserFunctionTypeList.add(BaseDrawUserFunctionType.PUSH_OUT);
         MyDrawBoardConfig.canUseDrawUserFunctionTypeList.add(BaseDrawUserFunctionType.PAGER_ADD);

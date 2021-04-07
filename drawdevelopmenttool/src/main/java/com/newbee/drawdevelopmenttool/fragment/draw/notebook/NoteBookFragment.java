@@ -99,6 +99,7 @@ public class NoteBookFragment extends BaseDrawViewFragment {
             itemClick.itemClick(DrawFunctionUtil.useDrawTypeGetImgRs(lastDrawType),-1,lastDrawType);
             drawingTitleAdapter.setSelectDrawTypeIndex(lastDrawTypeIndex);
         }
+        drawControlUtil.openFile();
 
     }
 
