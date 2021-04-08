@@ -17,6 +17,9 @@ public enum BaseDrawType {
     ERASER,//橡皮擦
     LINE,//直线
     RECT,//矩形
+    TRIANGLE,//三角形
+    ISOSTRIGLE,//等腰三角形
+    REGTRIGLE,//等邊三角形
     FILL_RECT,//实心的矩形
     CIRCLE,//圆
     FILL_CIRCLE,//实心圆

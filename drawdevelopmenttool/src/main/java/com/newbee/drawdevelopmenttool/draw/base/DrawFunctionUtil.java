@@ -41,11 +41,17 @@ public class DrawFunctionUtil {
             case        FILL_OVAL://实心椭圆
                 return R.drawable.icon_fill_ovalu;
             case      PLYGON://多边形
-                return R.drawable.icon_triangle;
+                return R.drawable.icon_polygon;
             case       SPRAYGUN://喷枪
                 return R.drawable.icon_spraygun;
             case       PAINTPOT://油漆桶
                 return R.drawable.icon_paintpot;
+            case TRIANGLE:
+                return R.drawable.icon_triangle;
+            case REGTRIGLE:
+                return R.drawable.icon_regtrigle;
+            case ISOSTRIGLE:
+                return R.drawable.icon_isostrigle;
             default:
                 return R.drawable.icon_no_know;
         }

@@ -117,10 +117,15 @@ public class MyApplication extends BaseDrawModelApplication {
         MyDrawBoardConfig.canUseDrawTypeList.add(BaseDrawType.BALL_PEN);
         MyDrawBoardConfig.canUseDrawTypeList.add(BaseDrawType.BRUSH_PEN);
         MyDrawBoardConfig.canUseDrawTypeList.add(BaseDrawType.MARK_PEN);
+        MyDrawBoardConfig.canUseDrawTypeList.add(BaseDrawType.ERASER);
         MyDrawBoardConfig.canUseDrawTypeList.add(BaseDrawType.LINE);
         MyDrawBoardConfig.canUseDrawTypeList.add(BaseDrawType.RECT);
+        MyDrawBoardConfig.canUseDrawTypeList.add(BaseDrawType.PLYGON);
         MyDrawBoardConfig.canUseDrawTypeList.add(BaseDrawType.CIRCLE);
         MyDrawBoardConfig.canUseDrawTypeList.add(BaseDrawType.OVAL);
+        MyDrawBoardConfig.canUseDrawTypeList.add(BaseDrawType.TRIANGLE);
+        MyDrawBoardConfig.canUseDrawTypeList.add(BaseDrawType.REGTRIGLE);
+        MyDrawBoardConfig.canUseDrawTypeList.add(BaseDrawType.ISOSTRIGLE);
         //设置可以用的功能模块
         MyDrawBoardConfig.canUseDrawUserFunctionTypeList.add(BaseDrawUserFunctionType.SET_BACKGOUND);
         MyDrawBoardConfig.canUseDrawUserFunctionTypeList.add(BaseDrawUserFunctionType.PREVIEW);
