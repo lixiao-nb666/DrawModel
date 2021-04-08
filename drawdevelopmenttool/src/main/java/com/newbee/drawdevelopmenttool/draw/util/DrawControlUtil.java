@@ -102,7 +102,6 @@ public class DrawControlUtil {
     private void setBG(){
         int bgRs= ContentBgUtil.getBgRs(headBean);
         bgFL.setBackgroundResource(bgRs);
-
     }
 
     private void setBGAndNeedShowText(){
@@ -124,6 +123,7 @@ public class DrawControlUtil {
             return;
         }
         baseDrawView.setFunctionType(drawViewFunctionType);
+
     }
 
     public void setDrawUserFunctionType(BaseDrawUserFunctionType drawUserFunctionType, Object... objects){

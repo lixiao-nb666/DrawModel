@@ -52,6 +52,8 @@ public abstract class BaseDrawViewFragment extends BaseFragmen_v4 implements Dra
         public void needShowPagerText(int showPagerNumb, int countPagerNumb) {
             setShowPagerText(showPagerNumb,countPagerNumb);
         }
+
+
     };
     protected abstract int setViewRs();
     protected abstract void bindView();
@@ -64,6 +66,7 @@ public abstract class BaseDrawViewFragment extends BaseFragmen_v4 implements Dra
     protected abstract void drawChangeConfig();
     protected abstract void drawClose();
     protected abstract void setShowPagerText(int showPagerNumb, int countPagerNumb);
+
 
 
 

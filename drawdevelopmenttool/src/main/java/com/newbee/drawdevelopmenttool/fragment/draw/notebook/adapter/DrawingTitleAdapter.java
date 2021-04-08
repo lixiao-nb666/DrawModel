@@ -49,6 +49,11 @@ public class DrawingTitleAdapter extends RecyclerView.Adapter {
        this.selectDrawTypeIndex=selectDrawTypeIndex;
     }
 
+    private boolean canDraw=true;
+    public void setCanDraw(boolean canDraw){
+        this.canDraw=canDraw;
+    }
+
     private ImageView selectDrawView;
     private ImageView selectFunctionView;
 
@@ -56,6 +61,12 @@ public class DrawingTitleAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         LG.i(tag, "on bing view " + position);
         final ViewHodler viewHodler = (ViewHodler) holder;
+        if(!canDraw){
+            viewHodler.titltIV.setVisibility(View.GONE);
+            return;
+        }
+        viewHodler.titltIV.setVisibility(View.VISIBLE);
+
         if (position < drawTypeList.size()) {
             final BaseDrawType drawType = drawTypeList.get(position);
             final int showRsId = DrawFunctionUtil.useDrawTypeGetImgRs(drawType);

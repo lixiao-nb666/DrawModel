@@ -42,6 +42,11 @@ public class NoteBookFragment extends BaseDrawViewFragment {
         public void itemClick(int rsId, int positon,BaseDrawViewFunctionType drawFunctionType) {
             selectIv.setImageResource(rsId);
             drawControlUtil.setDrawViewFunction(drawFunctionType);
+            switch (drawFunctionType){
+                case CAN_NOT_DRAW:
+                    drawingTitleAdapter.setCanDraw(drawControlUtil.getBaseDrawView().canDraw());
+                    break;
+            }
         }
 
         @Override
@@ -100,7 +105,6 @@ public class NoteBookFragment extends BaseDrawViewFragment {
             drawingTitleAdapter.setSelectDrawTypeIndex(lastDrawTypeIndex);
         }
         drawControlUtil.openFile();
-
     }
 
 
@@ -132,6 +136,8 @@ public class NoteBookFragment extends BaseDrawViewFragment {
         }
         LG.i("setShowPagerText","setShowPagerText:"+showPagerNumb+"---"+countPagerNumb);
     }
+
+
 
 
 }
