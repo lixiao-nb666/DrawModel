@@ -53,6 +53,14 @@ public class MyApplication extends BaseDrawModelApplication {
             public boolean canSaveOrOpen() {
                 return true;
             }
+            boolean canDraw=true;
+            @Override
+            public boolean userCanDraw() {
+                canDraw=!canDraw;
+                return canDraw;
+            }
+
+
 
             @Override
             public void setListen(BaseDrawViewListen listen) {

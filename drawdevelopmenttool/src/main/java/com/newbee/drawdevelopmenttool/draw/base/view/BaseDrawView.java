@@ -16,7 +16,7 @@ public interface BaseDrawView {
 
     public boolean canSaveOrOpen();
 
-    public boolean canDraw();
+    public boolean userCanDraw();
 
     public void setListen(BaseDrawViewListen listen);
 

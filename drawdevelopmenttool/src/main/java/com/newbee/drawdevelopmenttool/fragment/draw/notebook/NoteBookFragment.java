@@ -44,7 +44,8 @@ public class NoteBookFragment extends BaseDrawViewFragment {
             drawControlUtil.setDrawViewFunction(drawFunctionType);
             switch (drawFunctionType){
                 case CAN_NOT_DRAW:
-                    drawingTitleAdapter.setCanDraw(drawControlUtil.getBaseDrawView().canDraw());
+                    drawingTitleAdapter.setCanDraw(drawControlUtil.getBaseDrawView().userCanDraw());
+                    drawingTitleAdapter.notifyDataSetChanged();
                     break;
             }
         }

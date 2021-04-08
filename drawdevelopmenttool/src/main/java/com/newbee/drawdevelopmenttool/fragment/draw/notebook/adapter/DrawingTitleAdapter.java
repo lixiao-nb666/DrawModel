@@ -61,13 +61,14 @@ public class DrawingTitleAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         LG.i(tag, "on bing view " + position);
         final ViewHodler viewHodler = (ViewHodler) holder;
-        if(!canDraw){
-            viewHodler.titltIV.setVisibility(View.GONE);
-            return;
-        }
-        viewHodler.titltIV.setVisibility(View.VISIBLE);
+
 
         if (position < drawTypeList.size()) {
+            if(!canDraw){
+                viewHodler.titltIV.setVisibility(View.GONE);
+                return;
+            }
+            viewHodler.titltIV.setVisibility(View.VISIBLE);
             final BaseDrawType drawType = drawTypeList.get(position);
             final int showRsId = DrawFunctionUtil.useDrawTypeGetImgRs(drawType);
             if(selectDrawTypeIndex==drawType.ordinal()){
@@ -103,6 +104,12 @@ public class DrawingTitleAdapter extends RecyclerView.Adapter {
         } else if(position < drawTypeList.size()+drawFunctionTypeList.size()){
             int needPosition = position - drawTypeList.size();
             final BaseDrawViewFunctionType drawFunctionType = drawFunctionTypeList.get(needPosition);
+            if(!canDraw&&drawFunctionType!=BaseDrawViewFunctionType.CAN_NOT_DRAW){
+                viewHodler.titltIV.setVisibility(View.GONE);
+                return;
+            }
+            viewHodler.titltIV.setVisibility(View.VISIBLE);
+
             final int showRsId = DrawFunctionUtil.useDrawViewFunctionTypeGetImgRs(drawFunctionType);
             viewHodler.titltIV.setImageResource(showRsId);
             viewHodler.titltIV.setOnClickListener(new View.OnClickListener() {
@@ -117,6 +124,11 @@ public class DrawingTitleAdapter extends RecyclerView.Adapter {
                 }
             });
         }else {
+            if(!canDraw){
+                viewHodler.titltIV.setVisibility(View.GONE);
+                return;
+            }
+            viewHodler.titltIV.setVisibility(View.VISIBLE);
             int needPosition = position - drawTypeList.size()-drawFunctionTypeList.size();
             final BaseDrawUserFunctionType drawUserFunctionType = drawUserFunctionTypeList.get(needPosition);
             final int showRsId = DrawFunctionUtil.useDrawUserFunctionTypeGetImgRs(drawUserFunctionType);
